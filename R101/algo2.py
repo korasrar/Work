@@ -12,3 +12,6 @@ print(algo2("aezd"))
 
 def test_algo2():
     assert algo2("aeizd") == True
+    assert algo2("aezd") == False
+    assert algo2("klhjg") == False
+    assert algo2("aeiouy") == True
