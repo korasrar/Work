@@ -1,6 +1,14 @@
 m = ""
 
 def algo2(m):
+    """algo2 permet de savoir si il y a une majorite de voyelles dans le mot
+
+    Args:
+        m (str): mot avec voyelles ou non
+
+    Returns:
+        bool: voyelles > 0 ou pas
+    """    
     res = 0
     for caractere in m:
         if caractere in ["a","e","i","o","u","y"]:
