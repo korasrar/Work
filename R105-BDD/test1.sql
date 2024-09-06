@@ -7,10 +7,10 @@ create table BdHabitantVoiture(
     Rue Varchar2(20),
     Num Number(2),
     Ville Varchar2(10),
-    MarqueV Varchar2(10),
+    MarqueV Varchar2(15),
     NomV Varchar2(10),
     AnneeV Number(5),
-    CouleurV Varchar2(10),
+    CouleurV Varchar2(15),
     TypeMoteurV Varchar2(10),
     ImmV Varchar2(10)
 );
