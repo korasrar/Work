@@ -31,4 +31,11 @@ def v_contravention(vlimite,vvoiture):
         spermis = 3      
     return(amende,ppoints,spermis)
 print(v_contravention(50,70))
+
+def test_v_contravention():
+    assert v_contravention(50,70) == 1
+    assert v_contravention(50,70) == 1
+    assert v_contravention(50,70) ==1
+    assert v_contravention(50,70) ==1
+
             
