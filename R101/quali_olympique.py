@@ -19,7 +19,7 @@ def qualification(gender,pr100m,racewin,wc):
     return res
 
 def test_qualification():
-    assert qualification("h",20,5,False)
-    assert qualification("h",3,40,False)
-    assert qualification("f",85,1,True)
-    assert qualification("f",11,4,False)
+    assert qualification("h",20,5,False) == False
+    assert qualification("h",3,40,False) == True
+    assert qualification("f",85,1,True) == True
+    assert qualification("f",11,4,False) == True
