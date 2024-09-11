@@ -1,1 +1,1 @@
-print("Bienvenue à l’IUT’O")
+print("Coucou")
