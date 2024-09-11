@@ -1,5 +1,8 @@
 def v_contravention(vlimite,vvoiture):
-    vdep = vlimite-vvoiture
+    vdep = vvoiture-vlimite
+    amende = 0
+    ppoints = 0
+    spermis = 0
     if vdep == 20:
         if vlimite > 50:
             amende = 68
@@ -26,5 +29,6 @@ def v_contravention(vlimite,vvoiture):
         amende = 1500
         ppoints = 6
         spermis = 3      
-    return()
+    return(amende,ppoints,spermis)
+print(v_contravention(50,70))
             
