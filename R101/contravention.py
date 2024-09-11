@@ -3,7 +3,7 @@ def v_contravention(vlimite,vvoiture):
     amende = 0
     ppoints = 0
     spermis = 0
-    if vdep == 20:
+    if vdep <= 20 and vdep > 0:
         if vlimite > 50:
             amende = 68
             ppoints = 1
