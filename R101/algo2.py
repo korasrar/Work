@@ -16,7 +16,6 @@ def algo2(m):
         else:
             res = res-1
     return res>0
-print(algo2("aezd"))
 
 def test_algo2():
     assert algo2("aeizd") == True
