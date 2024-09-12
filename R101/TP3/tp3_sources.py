@@ -1,23 +1,30 @@
 # exercice 1
-def mystere_exo2(entree):
-    """[summary]
+def majopairs(entree):
+    """Vérifie si il y a une majorité de nombres pairs dans la liste
 
     Args:
-        entree ([type]): [description]
+        entree (list): Liste de nombres
 
     Returns:
-        [type]: [description]
+        bool: Nombre de chiffre pairs supérieur aux autres
     """
-    xxx = 0
-    yyy = 0
+    pairs = 0
+    impairs = 0
     # au début de chaque tour de boucle
     #  A COMPLETER
-    for zzz in entree:
-        if zzz % 2 == 0:
-            xxx += 1
+    for nombres in entree:
+        if nombres % 2 == 0:
+            pairs += 1
         else:
-            yyy += 1
-    return xxx >= yyy
+            impairs += 1
+    return pairs >= impairs
+
+
+def test_majopairs():
+    assert majopairs([1,2,1,6,6,2,1]) == True
+    assert majopairs([2,2,2,2,2,2,2]) == True
+    assert majopairs([5,5,5,5,5,5,5]) == False
+    assert majopairs([6,6,6,6,6,6,6]) == True
 
 
 # exercice 2
@@ -31,14 +38,14 @@ def min_sup(liste_nombres, valeur):
     Returns:
         int ou float: le plus petit nombre de la liste supérieur à valeur
     """
-    res = liste_nombres[0]
+    res = 0
     # au début de chaque tour de boucle res est le plus petit élément
     # déjà énuméré supérieur à valeur
     for elem in liste_nombres:
-        if valeur < elem < res:
+        if valeur < res < elem:
             res = elem
     return res
-
+print(min_sup([8, 12, 7, 3, 9, 2, 1, 4, 9], 5))
 
 def test_min_sup():
     assert min_sup([8, 12, 7, 3, 9, 2, 1, 4, 9], 5) == 7
