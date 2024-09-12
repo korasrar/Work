@@ -1,10 +1,13 @@
 def biyear(year):
-    res = False
-    if year % 4 == 0 or year % 400 == 0:
-        res = True
-        if year % 100 == 0 :
-            res = False
-    return res
+    """Vérifie si une année est bissextile 
+
+    Args:
+        year (int): valeur de l'année
+
+    Returns:
+        bool: Année bissextile ou pas
+    """    
+    return year % 4 == 0 and not year % 100 == 0 or year % 400 == 0
 
 def test_biyear():
     assert biyear(2024) == True
