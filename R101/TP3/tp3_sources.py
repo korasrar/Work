@@ -70,10 +70,11 @@ def nb_mots(phrase):
     """    
     resultat = 0
     c1 = ''
+    c2 = ''
     # au début de chaque tour de boucle
     # c1 vaut
     # c2 vaut
-    # resultat vaut
+    # resultat vaut  
     for c2 in phrase:
         if c1 == ' ' and c2 != ' ':
             resultat = resultat + 1
