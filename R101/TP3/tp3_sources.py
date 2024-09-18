@@ -38,14 +38,17 @@ def min_sup(liste_nombres, valeur):
     Returns:
         int ou float: le plus petit nombre de la liste supérieur à valeur
     """
-    res = 0
+    res = None
     # au début de chaque tour de boucle res est le plus petit élément
     # déjà énuméré supérieur à valeur
-    for elem in liste_nombres:
-        if valeur < res < elem:
+    for elem in liste_nombres :
+        if elem > valeur :
             res = elem
+    if res != None :
+        for elem in liste_nombres :
+            if valeur < elem < res:
+                res = elem
     return res
-print(min_sup([8, 12, 7, 3, 9, 2, 1, 4, 9], 5))
 
 def test_min_sup():
     assert min_sup([8, 12, 7, 3, 9, 2, 1, 4, 9], 5) == 7
@@ -76,6 +79,7 @@ def nb_mots(phrase):
             resultat = resultat + 1
         c1 = c2
     return resultat+1
+print(nb_mots(" ce  test ne  marche pas ") == 5)
 
 
 def test_nb_mots():
