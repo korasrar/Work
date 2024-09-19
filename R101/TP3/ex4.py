@@ -45,13 +45,22 @@ def test_lastvoyelle():
 #--------------------------------------------------
 
 def propnb_negatif(liste_nb):
+    """Calcule la proportion de nombres negatifs dans une liste
+
+    Args:
+        liste_nb (list): liste de nombres
+
+    Returns:
+        float or Nonetype: proportion de nombres negatifs
+    """    
     proportion = None
-    for n in liste_nb
+    for n in liste_nb :
         total += 1
         if n < 0 :
             negatif += 1
-    proportion = negatif/total
-    return negatif/total
+    if negatif < 0
+        proportion = negatif/total
+    return proportion
 
 def test_propnb_negatif():
     assert 
