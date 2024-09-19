@@ -69,15 +69,17 @@ def nb_mots(phrase):
     c1 = ''
     c2 = ''
     # au début de chaque tour de boucle
-    # c1 vaut '' 
-    # c2 vaut ''
+    # c1 vaut
+    # c2 vaut
     # resultat vaut  
     for c2 in phrase:
-        if phrase[0] == ' ' :
-            c1 = c2  
-        elif c1 == ' ' and c2 != ' ':
+        if c1 == ' ' and c2 != ' ':
             resultat = resultat + 1
-    return resultat+1
+        c1 = c2
+    if phrase =="" or phrase[0]==' ' :
+        return resultat
+    else :
+        return resultat+1
 print(nb_mots(" ce  test ne  marche pas ") == 5)
 
 
