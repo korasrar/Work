@@ -43,10 +43,7 @@ def min_sup(liste_nombres, valeur):
     # déjà énuméré supérieur à valeur
     for elem in liste_nombres :
         if elem > valeur :
-            res = elem
-    if res != None :
-        for elem in liste_nombres :
-            if valeur < elem < res:
+            if res is None or elem < res : 
                 res = elem
     return res
 
@@ -72,13 +69,14 @@ def nb_mots(phrase):
     c1 = ''
     c2 = ''
     # au début de chaque tour de boucle
-    # c1 vaut
-    # c2 vaut
+    # c1 vaut '' 
+    # c2 vaut ''
     # resultat vaut  
     for c2 in phrase:
-        if c1 == ' ' and c2 != ' ':
+        if phrase[0] == ' ' :
+            c1 = c2  
+        elif c1 == ' ' and c2 != ' ':
             resultat = resultat + 1
-        c1 = c2
     return resultat+1
 print(nb_mots(" ce  test ne  marche pas ") == 5)
 
