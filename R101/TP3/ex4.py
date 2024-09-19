@@ -53,14 +53,20 @@ def propnb_negatif(liste_nb):
     Returns:
         float or Nonetype: proportion de nombres negatifs
     """    
+    total = 0
+    negatif = 0
     proportion = None
     for n in liste_nb :
         total += 1
         if n < 0 :
             negatif += 1
-    if negatif < 0
+    if negatif > 0 :
         proportion = negatif/total
     return proportion
+print(propnb_negatif([4,-2,8,2,-2,-7]))
 
 def test_propnb_negatif():
-    assert 
+    assert propnb_negatif([4,-2,8,2,-2,-7]) == 0.5
+    assert propnb_negatif([1,1,1,1,1,1]) is None
+    assert propnb_negatif([-3,-3,-3,-3,-3,-3]) == 1.0
+    assert propnb_negatif([4,15,96,42,-6]) == 0.2
