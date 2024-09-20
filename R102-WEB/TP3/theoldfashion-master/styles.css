@@ -2,13 +2,28 @@ body{
   margin: 5em;
 }
 
+header nav ul{
+  border-bottom: 1px solid;
+}
+
 ul{  
   padding: 0;
+}
+
+img{
+  width: 16px;
+  height: 16px;
 }
 
 li{
   margin-right: 2em;
   margin-top: 1em;
+  list-style: none;
+}
+
+a{
+  font-weight: 700;
+  text-decoration: none;
 }
 
 main{
@@ -21,14 +36,22 @@ article{
 
 footer{
   padding-top: 1em;
+  border-top: 4px solid;
 }
 
 footer > p{
   margin: 0;
 }
 
+main h1{
+  border-bottom: 4px solid;
+  font-size: 400%;
+  font: "Prima serif bold"
+}
 
 h1>span{
   display: block;
+  color: grey;
+  font-style: italic
 }
 
