@@ -60,3 +60,14 @@ print(newint("2021"))
 # --------------------------------------
 # EXERCICE N°5
 # -------------------------------------- 
+def wordinlist(phrase):
+    listee = []
+    addword = ""
+    for i in range(len(phrase)):
+        if phrase[i].isalpha():
+            addword = addword + phrase[i]
+        if not phrase[i].isalpha() and addword != '':
+            listee.append(addword)
+            addword = ""
+    return listee
+print(wordinlist("Cela fait déjà 28 jours! 28 jours à l'IUT'O! Cool!!"))
