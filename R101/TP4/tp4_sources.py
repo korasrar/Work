@@ -57,42 +57,6 @@ def newint(nombrestr):
     return nombre
 print(newint("2021"))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # --------------------------------------
-# EXERCICE N°4
+# EXERCICE N°5
 # -------------------------------------- 
-def searchword(liste_all,lettre):
-    mots = ""
-    liste_word = []
-    for i in range(len(liste_all)):
-        mots = liste_all[i]
-        if lettre == mots[0] : 
-            liste_word.append(mots)
-    return liste_word
-print(searchword(["salut","hello","hallo","ciao","hola"],"h"))

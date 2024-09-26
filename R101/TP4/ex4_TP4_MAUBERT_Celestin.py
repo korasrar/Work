@@ -14,12 +14,10 @@ def searchword(liste_all,lettre):
     Returns:
         list: Liste des mots qui commence par la lettre choisie
     """    
-    mots = ""
     liste_word = []
     for i in range(len(liste_all)):
-        mots = liste_all[i]
-        if lettre == mots[0] : 
-            liste_word.append(mots)
+        if lettre == liste_all[i][0] : 
+            liste_word.append(liste_all[i])
     return liste_word
 
 def test_searchword():
