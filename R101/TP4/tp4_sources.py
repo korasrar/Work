@@ -60,6 +60,7 @@ print(newint("2021"))
 # --------------------------------------
 # EXERCICE N°5
 # -------------------------------------- 
+
 def wordinlist(phrase):
     listee = []
     addword = ""
