@@ -23,6 +23,6 @@ def searchword(liste_all,lettre):
     return liste_word
 
 def test_searchword():
-    assert searchword(["salut","hello","hallo","ciao","hola"],"h") == ['hello', 'hallo', 'hola']
+    assert searchword(["salut","hello","hallo","ciaohi","hola"],"h") == ['hello', 'hallo', 'hola']
     assert searchword(["rei","ayanami","asuka","langley","shinji","ikari"],"a") == ['ayanami','asuka']
     assert searchword(["salut","aurevoir","savoir","littérature"],"s") == ['salut','savoir']
