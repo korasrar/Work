@@ -1,0 +1,31 @@
+/* A COMPLETER */
+.detournee {
+    text-decoration: underline
+}
+
+.contandante{
+    font-weight: bold;
+}
+
+article h1,article h2,article h3{
+    color: red;
+}
+
+aside > nav > ul > li > ul > li {
+    list-style: none;
+}
+
+#armes ul > li > ul{
+    color: blue;
+}
+#armes{
+    color :green
+}
+
+section img{
+    height: 1em;
+}
+
+aside img{
+    width: 20vw;
+}
