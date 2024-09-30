@@ -4,7 +4,7 @@ c = 0
 d = 0
 
 def algo1(a,b,c,d):
-    """algo1 permet de trouver le nombres le plus petit entre a,b,c,d
+    """lgo1 permet de trouver le nombres le plus petit entre a,b,c,d
 
     Args:
         a (int): 
