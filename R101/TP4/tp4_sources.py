@@ -70,5 +70,28 @@ def wordinlist(phrase):
         if not phrase[i].isalpha() and addword != '':
             listee.append(addword)
             addword = ""
+    if addword != '':
+        listee.append(addword)
     return listee
-print(wordinlist("Cela fait déjà 28 jours! 28 jours à l'IUT'O! Cool!!"))
+print(wordinlist("Cela fait déjà 28 jours! 28 jours à l'IUT'O! Cool"))
+
+# --------------------------------------
+# EXERCICE N°6
+# -------------------------------------- 
+
+def firstletter(texte,letter):
+    liste_correct = []
+    liste = []
+    addword = ""
+    for i in range(len(texte)):
+        if texte[i].isalpha():
+            addword = addword + texte[i]
+        if not texte[i].isalpha() and addword != '':
+            liste.append(addword)
+            addword = ""
+    for i in range(len(liste)):
+        if liste[i][0] in letter : 
+            liste_correct.append(liste[i])
+    return liste_correct
+print(firstletter("Cela fait déjà 28 jours! 28 jours à l'IUT'O! Cool!!","cC"))
+
