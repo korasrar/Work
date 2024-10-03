@@ -7,7 +7,6 @@ def nun(n):
     for i in range (2, n+1) :
         listebool.append(True)
     return listebool
-print(nun(5))
 
 
 def nun2(listebool,x):
@@ -15,17 +14,15 @@ def nun2(listebool,x):
         if i%x == 0 and i != x:
             listebool[i] = False
     return listebool
-print(nun2(nun(6),2))
 
-def nun3(n):
+def crible(n):
     listeprem = []
-    nun(n)
+    listebool = nun(n)
     for i in range(len(listebool)) :
-        if i==2 :
-            
-            listebool[i] = False
-    for i in range(len(listebool))  :
+        if listebool[i]==True :
+            nun2(listebool,i)
+    for i in range(len(listebool)) :
         if listebool[i] == True :
-            listeprem.append([i])
+            listeprem.append(i)
     return listeprem
-print(nun3(6))
+print(crible(120))
