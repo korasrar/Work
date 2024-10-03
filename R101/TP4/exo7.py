@@ -18,8 +18,7 @@ def nun2(listebool,x):
 def crible(n):
     listeprem = []
     listebool = nun(n)
-    for i in range(len(listebool)) :
-        if listebool[i]==True :
+    for i in range(2,len(listebool)) :
             nun2(listebool,i)
     for i in range(len(listebool)) :
         if listebool[i] == True :
