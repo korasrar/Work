@@ -1,0 +1,17 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header{
+    flex-basis: 100%;
+}
+
+#rose{
+    flex-basis: ;
+}
