@@ -833,7 +833,7 @@ liste6 = [
 # Listes des fonctions à implémenter
 # -----------------------------------------------------------------------------------------------------
 
-def est_avant(activite1, activite2):
+def est_avant(activite1, activite2): # DONE
     """
     Retourne True si activite1 est avant activite2, False sinon
     les activités sont ordonnées selon leur type, puis en cas d'égalité selon le prénom et enfin selon leur date 
@@ -844,9 +844,15 @@ def est_avant(activite1, activite2):
     Returns:
         bool: True si activite1 est avant activite2, False sinon
     """
-    ...
+    res = None
+    for i in range(len(activite1)): 
+        if activite1[i] <= activite2[i] :
+            res = True
+        else :
+            res = False
+    return res
 
-def annee(activite):
+def annee(activite): #DONE
     """
     Retourne l'année d'une activité
     Args:
@@ -855,9 +861,10 @@ def annee(activite):
     Returns:
         str: l'année de l'activité
     """
-    ...
+    date = activite[1].split('-')
+    return date[0]
 
-def annee_mois(activite):
+def annee_mois(activite): #DONE
     """
     Retourne l'année et le mois d'une activité
     Args:
@@ -866,7 +873,8 @@ def annee_mois(activite):
     Returns:
         str: l'année et le mois de l'activité
     """
-    ...
+    date = activite[1].split('-')
+    return date[0]+'-'+date[1]
 
 def max_emmission(liste_activites):
     """
@@ -877,7 +885,15 @@ def max_emmission(liste_activites):
     Returns:
         tuple: l'activité avec le plus grand bilan carbone
     """
-    ...
+    max = 0
+    for i in range(len(liste_activites)) :
+        if liste_activites != [] and liste_activites[i][2] > max :
+            max = i
+    if liste_activites != [] :
+        return liste_activites[max]
+    else :
+        return None
+
 
 def filtre_par_prenom(liste_activites, prenom):
     """
