@@ -889,10 +889,7 @@ def max_emmission(liste_activites):
     for i in range(len(liste_activites)) :
         if liste_activites != [] and liste_activites[i][2] > max :
             max = i
-    if liste_activites != [] :
-        return liste_activites[max]
-    else :
-        return None
+            
 
 
 def filtre_par_prenom(liste_activites, prenom):
