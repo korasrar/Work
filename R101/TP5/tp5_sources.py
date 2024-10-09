@@ -27,7 +27,7 @@ mystere([12, 5, 8, 48, 12, 418, 185, 17, 5, 87], 20)
 liste_villes = ["Blois", "Bourges", "Chartres", "Châteauroux", "Dreux",
                 "Joué-lès-Tours", "Olivet", "Orléans", "Tours", "Vierzon"]
 population = [45871, 64668,  38426, 43442, 30664, 38250, 22168, 116238,
-              136463,  25725]
+                136463,  25725]
 
 # ---------------------------------------
 # Exemple de scores
