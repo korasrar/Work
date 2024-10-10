@@ -148,12 +148,11 @@ def addscore(score,joueur):
             if score > scores[i]:
                 scores.insert(i,score)
                 joueurs.insert(i,joueur)
-                break
+                return scores,joueurs
             if score < scores[i-1] :
-                scores.insert(i-1,score)
-                joueurs.insert(i-1,joueur)
-                break
-    return "nv liste joueur : ",joueurs,"nv liste scores : ",scores
-print(addscore(1,"Koras"))
+                scores.append(score)
+                joueurs.append(joueur)
+                return scores,joueurs
+#print(addscore(1,"Koras"))
 
 

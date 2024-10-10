@@ -885,11 +885,14 @@ def max_emmission(liste_activites):
     Returns:
         tuple: l'activité avec le plus grand bilan carbone
     """
-    max = 0
+    maxe = 0
+    cpt = 0
     for i in range(len(liste_activites)) :
-        if liste_activites != [] and liste_activites[i][2] > max :
-            max = i
-            
+        if liste_activites != [] and liste_activites[i][2] > maxe :
+            maxe = liste_activites[i][2]
+            cpt = i
+    return liste_activites[cpt]
+print(max_emmission(liste1))
 
 
 def filtre_par_prenom(liste_activites, prenom):
