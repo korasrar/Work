@@ -91,10 +91,13 @@ def test_sommesupvaleurs():
     assert sommesupvaleurs([],) == True
 
 def verifemail(email):
-    if phrase[0] != "@" and phrase[-1] != "." :   
-        for i in range(len(email)) :
-            f
+    splitsep = []
+    if email[0] != "@" and email[-1] != "." and "@" in email:
+        splitsep = email.split("@")
+        if "." in splitsep[1] and "." not in splitsep[1][0]:
+            return True
     return False
+#print(verifemail("celestin.maubert@gmail.com"))
 
 # ---------------------------------------
 # Exercice n°4 
@@ -104,3 +107,53 @@ def verifemail(email):
 # ---------------------------------------
 scores = [352100, 325410, 312785, 220199, 127853]
 joueurs = ['Batman', 'Robin', 'Batman', 'Joker', 'Batman']
+
+def bestscore(joueur) :
+    max = 0
+    if joueur in joueurs :
+        for i in range(len(joueurs)) :
+            if joueur == joueurs[i] and scores[i] > max:
+                max = scores[i]
+        return max
+    return None
+#print(bestscore("Batman"))
+
+def verifbestscore(scores):
+    for i in range(1,len(scores)):
+        if scores[i] < scores[i-1]:
+            res = True
+        else:
+            return False
+    return res
+#print(verifbestscore(scores))
+
+def cptrepetj(joueur):
+    cpt = 0
+    for i in range(len(joueurs)):
+        if joueurs[i] == joueur :
+            cpt += 1
+    return cpt
+#print(cptrepetj("Batman"))
+
+def classement(joueur):
+    if verifbestscore(scores):
+        for i in range(len(scores)):
+            if joueur == joueurs[i] :
+                return i+1
+#print(classement("Joker"))
+
+def addscore(score,joueur):
+    if verifbestscore(scores):
+        for i in range(len(scores)):
+            if score > scores[i]:
+                scores.insert(i,score)
+                joueurs.insert(i,joueur)
+                break
+            if score < scores[i-1] :
+                scores.insert(i-1,score)
+                joueurs.insert(i-1,joueur)
+                break
+    return "nv liste joueur : ",joueurs,"nv liste scores : ",scores
+print(addscore(1,"Koras"))
+
+
