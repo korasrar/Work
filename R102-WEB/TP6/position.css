@@ -1,9 +1,10 @@
-header nav ul{
+header ul{
     display: flex;
     flex-wrap: nowrap;
+    z
 }
 
-header nav ul li{
+header li{
     flex-basis: 20%;
 }
 
@@ -47,4 +48,6 @@ header img{
     margin-right: auto;
     width: 50%;
 }
+
+
 

@@ -1,7 +1,14 @@
 header ul li{
-    list-style: none;
+    list-style:none;
     border: 2px solid black;
     text-align: center;
+}
+
+header ul{
+    padding-left: 0px ;
+}
+nav {
+    border: 1px solid red;
 }
 
 aside ul li{
