@@ -3,3 +3,35 @@ header ul li{
     border: 2px solid black;
     text-align: center;
 }
+
+aside ul li{
+    list-style: none;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+footer{
+    border: 2px solid black;
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+}
+
+aside{
+    border: 2px solid black;
+    padding: 10px;
+}
+
+article section{
+    padding: 10px;
+}
+
+#perso{
+    height: 200px;
+    width: 200px;
+}
+
+#banner{
+    height: 100px;
+    width: 100%;
+}
