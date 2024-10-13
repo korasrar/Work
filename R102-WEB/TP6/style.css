@@ -1,20 +1,42 @@
-header ul li{
-    list-style:none;
-    border: 2px solid black;
-    text-align: center;
-}
-
+/* Border nav */
 header ul{
     padding-left: 0px ;
+    border: 2px solid black;
 }
-nav {
-    border: 1px solid red;
+
+header ul li{
+    list-style:none;
+    border-right: 2px solid black;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+header ul li:last-child{
+    border-right: none;
+}
+/* Border nav */
+aside{
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+article section{
+    padding: 10px;
+}
+
+aside ul{
+    padding-left: 0px;
 }
 
 aside ul li{
     list-style: none;
     border: 1px solid black;
-    padding: 5px;
+    padding: 7px;
+    margin: 3px;
+    border-radius: 25px;
+    width: auto;
 }
 
 footer{
@@ -22,15 +44,7 @@ footer{
     width: 100%;
     padding: 10px;
     margin: 5px;
-}
-
-aside{
-    border: 2px solid black;
-    padding: 10px;
-}
-
-article section{
-    padding: 10px;
+    margin-top: 10px;
 }
 
 #perso{
@@ -39,6 +53,6 @@ article section{
 }
 
 #banner{
-    height: 100px;
+    height: 200px;
     width: 100%;
 }
