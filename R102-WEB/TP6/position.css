@@ -24,7 +24,7 @@ main{
 
 aside{
     flex-grow: 1;
-    flex-basis: 24%;
+    flex-basis: 19%;
 }
 
 aside ul{
@@ -33,12 +33,12 @@ aside ul{
 }
 
 aside ul li{
-    flex-basis: 50%;
+    flex-basis: 65%;
 }
 
 article{
     flex-grow: 1;
-    flex-basis: 75%;
+    flex-basis: 80%;
 }
 
 article section{

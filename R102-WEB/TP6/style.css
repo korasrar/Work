@@ -48,11 +48,11 @@ footer{
 }
 
 #perso{
-    height: 200px;
-    width: 200px;
+    height: 40%;
+    width: 40%;
 }
 
 #banner{
-    height: 300px;
     width: 100%;
+    border: 1px solid black;
 }
