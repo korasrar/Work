@@ -1041,7 +1041,7 @@ def fusionner_activites(liste_activites1, liste_activites2):
             listefusion.append(liste_activites1[ind1])
             ind1 +=1
     return listefusion
-print(fusionner_activites([('Lucas', '2024-09-02', 70.08, 'type3')], [('Lucas', '2024-09-01', 67.2, 'type3')]))
+print(fusionner_activites(liste3, liste4))
 
 def premiere_apparition_type(liste_activites, type_act):
     """
