@@ -844,13 +844,13 @@ def est_avant(activite1, activite2): # DONE
     Returns:
         bool: True si activite1 est avant activite2, False sinon
     """
-    res = None
-    for i in range(len(activite1)): 
-        if activite1[i] <= activite2[i] :
-            res = True
-        else :
-            res = False
-    return res
+    if activite1[3] > activite2[3]:
+        return False
+    elif activite1[0] > activite2[0]:
+        return False
+    elif activite1[1] > activite2[1]:
+        return False
+    return True
 
 def annee(activite): #DONE
     """
@@ -876,7 +876,7 @@ def annee_mois(activite): #DONE
     date = activite[1].split('-')
     return date[0]+'-'+date[1]
 
-def max_emmission(liste_activites):
+def max_emmission(liste_activites): # DONE
     """
     Retourne l'activité avec le plus grand bilan carbone
     Args:
@@ -885,17 +885,18 @@ def max_emmission(liste_activites):
     Returns:
         tuple: l'activité avec le plus grand bilan carbone
     """
-    maxe = 0
-    cpt = 0
-    for i in range(len(liste_activites)) :
-        if liste_activites != [] and liste_activites[i][2] > maxe :
-            maxe = liste_activites[i][2]
-            cpt = i
-    return liste_activites[cpt]
-print(max_emmission(liste1))
+    maxemi = 0
+    ind = 0
+    if liste_activites != [] :
+        for i in range(len(liste_activites)) :
+            if liste_activites[i][2] > maxemi : 
+                maxemi = liste_activites[i][2]
+                ind = i
+        return liste_activites[ind]
+    return None
 
 
-def filtre_par_prenom(liste_activites, prenom):
+def filtre_par_prenom(liste_activites, prenom): # DONE
     """
     Retourne la liste des activites effectuées par un usager donné
     Args:
@@ -905,9 +906,14 @@ def filtre_par_prenom(liste_activites, prenom):
     Returns:
         list: la liste des activites effectuées par l'usager prenom 
     """
-    ...
+    listeact = []
+    for i in range(len(liste_activites)):
+        if prenom in liste_activites[i]:
+            listeact.append(liste_activites[i])
+    return listeact
 
-def filtre(liste_activites, num_critere, val_critere):
+
+def filtre(liste_activites, num_critere, val_critere): # DONE
     """
     Retourne la liste des activites qui vérifient un critère donné
     Args:
@@ -918,9 +924,14 @@ def filtre(liste_activites, num_critere, val_critere):
     Returns:
         list: la liste des activites qui vérifient le critère
     """
-    ...
+    listecrit = []
+    for i in range(len(liste_activites)):
+        if liste_activites[i][num_critere] == val_critere :
+            listecrit.append(liste_activites[i])
+    return listecrit
 
-def cumul_emmissions(liste_activites):
+
+def cumul_emmissions(liste_activites): # DONE
     """
     Retourne le bilan carbone des activites (cumul des emmissions)
     Args:
@@ -929,19 +940,31 @@ def cumul_emmissions(liste_activites):
     Returns:
         int: le bilan carbone des activites
     """
-    ...
+    somme = 0
+    for i in range(len(liste_activites)) :
+        somme += liste_activites[i][2]
+    return somme
+
 
 def plus_longue_periode_emmissions_decroissantes(liste_activites):
     """
     Retourne la longueur de la plus longue suite d'emmissions décroissantes dans une liste d'activités de même type, d'une même personne et ordonnée chronologiquement
     Args:
         liste_activites (list): une liste d'activites de même type, d'une même personne et ordonnée chronologiquement
-
     Returns:
         int: la longueur de la plus longue suite d'emmissions décroissantes
     """
-    ...
-    
+    cpt = 0
+    cptmax = 0
+    for i in range(1,len(liste_activites)):
+        if cpt > cptmax :
+            cptmax = cpt
+        if liste_activites[i-1][2] > liste_activites[i][2]:
+            cpt += 1
+        else :
+            cpt = 0
+    return cptmax
+
 def est_bien_triee(liste_activites):
     """
     Retourne True si une liste d'activités est triée chronologiquement, False sinon
@@ -951,7 +974,10 @@ def est_bien_triee(liste_activites):
     Returns:
         bool: True si la liste est triée chronologiquement, False sinon
     """
-    ...
+    for i in range(1,len(liste_activites)):
+        if liste_activites[i-1][1] > liste_activites[i][1]:
+            return False
+    return True
 
 def liste_des_types(liste_activites):
     """
@@ -963,7 +989,11 @@ def liste_des_types(liste_activites):
     Returns:
         list: une liste des types d'activité présents dans une liste d'activités
     """
-    ...
+    listetype = []
+    for i in range(len(liste_activites)):
+        if liste_activites[i][3] not in listetype :
+            listetype.append(liste_activites[i][3])
+    return listetype
 
 def liste_des_personnes(liste_activites):
     """
@@ -975,8 +1005,12 @@ def liste_des_personnes(liste_activites):
     Returns:
         list: une liste des personnes présentes dans une liste d'activités
     """
-    ...
-    
+    listepersonne = []
+    for i in range(len(liste_activites)):
+        if liste_activites[i][0] not in listepersonne :
+            listepersonne.append(liste_activites[i][0])
+    return listepersonne
+
 def fusionner_activites(liste_activites1, liste_activites2):
     """
     Fusionne deux listes d'activités triées chronologiquement en une liste triée chronologiquement
@@ -988,7 +1022,29 @@ def fusionner_activites(liste_activites1, liste_activites2):
     Returns:
         list: la liste d'activités fusionnée
     """
-    ...
+    listefusion = []
+    ind1 = 0
+    ind2 = 0
+    while ind1 < len(liste_activites1) and ind2 < len(liste_activites2):
+        if est_avant(liste_activites1,liste_activites2):
+            listefusion.append(liste_activites1[ind1])
+            ind1 += 1
+        else:
+            listefusion.append(liste_activites2[ind2])
+            ind2 += 1
+    if ind1==len(liste_activites1):
+        while ind2!=len(liste_activites2):
+            listefusion.append(liste_activites2[ind2])
+            ind2 += 1
+    else :
+        while ind1!=len(liste_activites1):
+            listefusion.append(liste_activites2)
+            ind1 +=1
+    return listefusion
+
+
+
+
 
 def premiere_apparition_type(liste_activites, type_act):
     """
