@@ -23,7 +23,7 @@ main{
 }
 
 aside{
-    flex-grow: 1;
+    flex-grow: 0;
     flex-basis: 19%;
 }
 
