@@ -844,13 +844,13 @@ def est_avant(activite1, activite2): # DONE
     Returns:
         bool: True si activite1 est avant activite2, False sinon
     """
-    if activite1[3] > activite2[3]:
-        return False
-    elif activite1[0] > activite2[0]:
-        return False
-    elif activite1[1] > activite2[1]:
-        return False
-    return True
+    if activite1[3] < activite2[3]:
+        return True
+    elif activite1[0] < activite2[0]:
+        return True
+    elif activite1[1] < activite2[1]:
+        return True
+    return False
 
 def annee(activite): #DONE
     """
@@ -896,7 +896,7 @@ def max_emmission(liste_activites): # DONE
     return None
 
 
-def filtre_par_prenom(liste_activites, prenom): # DONE
+def filtre_par_prenom(liste_activites, prenom): #DONE
     """
     Retourne la liste des activites effectuées par un usager donné
     Args:
@@ -913,7 +913,7 @@ def filtre_par_prenom(liste_activites, prenom): # DONE
     return listeact
 
 
-def filtre(liste_activites, num_critere, val_critere): # DONE
+def filtre(liste_activites, num_critere, val_critere): #DONE
     """
     Retourne la liste des activites qui vérifient un critère donné
     Args:
@@ -1036,12 +1036,11 @@ def fusionner_activites(liste_activites1, liste_activites2):
         while ind2!=len(liste_activites2):
             listefusion.append(liste_activites2[ind2])
             ind2 += 1
-    elif ind2==len(liste_activites2) :
+    elif ind2==len(liste_activites2):
         while ind1!=len(liste_activites1):
             listefusion.append(liste_activites1[ind1])
             ind1 +=1
     return listefusion
-print(fusionner_activites(liste3, liste4))
 
 def premiere_apparition_type(liste_activites, type_act):
     """
@@ -1054,7 +1053,11 @@ def premiere_apparition_type(liste_activites, type_act):
     Returns:
         str: la date de la première apparition du type d'activité
     """
-    ...
+    if liste_activites != [] :
+        for i in range(len(liste_activites)):
+            if type_act == liste_activites[i][3] :
+                return liste_activites[i][1]
+    return None
 
 def recherche_activite_dichotomique(prenom, jour, type, liste_activites):
     """
@@ -1069,7 +1072,18 @@ def recherche_activite_dichotomique(prenom, jour, type, liste_activites):
     Returns:
         tuple: l'activité recherchée
     """
-    ...
+    testact = (prenom,jour,0,type)
+    start = 0
+    finish = len(liste_activites)-1
+    while start <= finish:
+        mid = (start+finish)//2
+        if est_avant(testact,liste_activites[mid]) :
+            start = mid+1
+        elif not est_avant(testact,liste_activites[mid]):
+            finish = mid-1
+        else :
+            return True
+    return None
 
 def charger_activites(nom_fichier):
     """
