@@ -1026,7 +1026,7 @@ def fusionner_activites(liste_activites1, liste_activites2):
     ind1 = 0
     ind2 = 0
     while ind1 < len(liste_activites1) and ind2 < len(liste_activites2):
-        if est_avant(liste_activites1,liste_activites2):
+        if est_avant(liste_activites1[ind1],liste_activites2[ind2]):
             listefusion.append(liste_activites1[ind1])
             ind1 += 1
         else:
@@ -1036,15 +1036,12 @@ def fusionner_activites(liste_activites1, liste_activites2):
         while ind2!=len(liste_activites2):
             listefusion.append(liste_activites2[ind2])
             ind2 += 1
-    else :
+    elif ind2==len(liste_activites2) :
         while ind1!=len(liste_activites1):
-            listefusion.append(liste_activites2)
+            listefusion.append(liste_activites1[ind1])
             ind1 +=1
     return listefusion
-
-
-
-
+print(fusionner_activites([('Lucas', '2024-09-02', 70.08, 'type3')], [('Lucas', '2024-09-01', 67.2, 'type3')]))
 
 def premiere_apparition_type(liste_activites, type_act):
     """
