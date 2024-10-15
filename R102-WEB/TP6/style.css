@@ -31,7 +31,18 @@ article section section{
     opacity: 0.5;
     color: white;
     border-radius: 25px;
-    margin: 5px;
+    margin: 7px;
+}
+
+/*Pour la page acceuil*/
+article > section > p{
+    background-color: #655025;
+    opacity: 0.5;
+    color: white;
+    border-radius: 25px;
+    margin: 7px;
+    padding: 10px;
+    font-size: 150%;
 }
 
 aside ul{

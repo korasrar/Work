@@ -41,9 +41,13 @@ article{
     flex-basis: 80%;
 }
 
+article h2{
+    text-align: center;
+}
+
 article > section{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 article > section > section{
