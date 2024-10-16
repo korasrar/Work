@@ -895,7 +895,6 @@ def max_emmission(liste_activites): # DONE
         return liste_activites[ind]
     return None
 
-
 def filtre_par_prenom(liste_activites, prenom): #DONE
     """
     Retourne la liste des activites effectuées par un usager donné
@@ -911,7 +910,6 @@ def filtre_par_prenom(liste_activites, prenom): #DONE
         if prenom in liste_activites[i]:
             listeact.append(liste_activites[i])
     return listeact
-
 
 def filtre(liste_activites, num_critere, val_critere): #DONE
     """
@@ -930,7 +928,6 @@ def filtre(liste_activites, num_critere, val_critere): #DONE
             listecrit.append(liste_activites[i])
     return listecrit
 
-
 def cumul_emmissions(liste_activites): # DONE
     """
     Retourne le bilan carbone des activites (cumul des emmissions)
@@ -944,7 +941,6 @@ def cumul_emmissions(liste_activites): # DONE
     for i in range(len(liste_activites)) :
         somme += liste_activites[i][2]
     return somme
-
 
 def plus_longue_periode_emmissions_decroissantes(liste_activites):
     """
@@ -975,7 +971,7 @@ def est_bien_triee(liste_activites):
         bool: True si la liste est triée chronologiquement, False sinon
     """
     for i in range(1,len(liste_activites)):
-        if liste_activites[i-1][1] > liste_activites[i][1]:
+        if not est_avant(liste_activites[i-1],liste_activites[i]):
             return False
     return True
 
