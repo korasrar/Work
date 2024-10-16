@@ -38,11 +38,57 @@ def oiseau_le_plus_observe(liste_observations):
     Returns:
         str: l'oiseau le plus observé (None si la liste est vide)
     """
-    oiseau_max = None
+    # Parcours element ---------------------------
+    """oiseau_max = 0
+    oiseau_res = ''
     for observation in liste_observations:
-        if observation > oiseau_max:
-            oiseau_max = observation
-    return oiseau_max[0]
+        if observation[1] > oiseau_max:
+            oiseau_max = observation[1]
+            oiseau_res = observation[0]
+    if oiseau_max == 0 :
+        return None
+    return oiseau_res"""
+    # Parcours indices ---------------------------
+    oiseau_max = 0
+    oiseau_res = 0
+    for i in range(len(liste_observations)):
+        if liste_observations[i][1] > oiseau_max:
+            oiseau_max = liste_observations[i][1]
+            oiseau_res = i
+    if oiseau_max == 0 :
+        return None
+    return liste_observations[oiseau_res][0]
+
+def recherche_oiseau(nom,listefamille):
+    for i in range(len(listefamille)):
+        if nom in listefamille[i] :
+            return listefamille[i]
+    return None
+
+def recherche_par_famille(famille,listefamille):
+    listeoiseaux = []
+    for i in range(len(listefamille)) :
+        if famille in listefamille[i] :
+            listeoiseaux.append(listefamille[i][0])
+    if listeoiseaux == []:
+        return None
+    return listeoiseaux
+
+def est_liste_observations(liste_observations):
+    for i in range(1,len(liste_observations)):
+        if liste_observations[i-1][0] < liste_observations[i][0] and liste_observations[i-1][1] != 0 :
+            res = True
+        else:
+            return False
+    return res
+print(est_liste_observations(observations1))
+
+def max_observations(liste_observations):
+    maxobserv = 0
+    for i in range(len(liste_observations)):
+        if liste_observations[i][1] > maxobserv :
+            maxobserv = liste_observations[i][1]
+    return maxobserv
 
 #--------------------------------------
 # PROGRAMME PRINCIPAL
