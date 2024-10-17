@@ -32,7 +32,9 @@ def test_max_observations():
     assert oiseaux.max_observations(oiseaux.observations3)==4
 
 def test_moyenne_oiseaux_observes():
-    assert oiseaux.moyenne_oiseaux_observes(...)==...
+    assert oiseaux.moyenne_oiseaux_observes(oiseaux.observations1)==3
+    assert oiseaux.moyenne_oiseaux_observes(oiseaux.observations2)==2.5
+    assert oiseaux.moyenne_oiseaux_observes(oiseaux.observations3)==16/6
 
 def test_total_famille():
     assert oiseaux.total_famille(...)==...

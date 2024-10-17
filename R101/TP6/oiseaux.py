@@ -90,8 +90,21 @@ def max_observations(liste_observations):
             maxobserv = liste_observations[i][1]
     return maxobserv
 
+def moyenne_oiseaux_observes(liste_observations):
+    somme = 0
+    cpt = 0
+    for i in range(len(liste_observations)):
+        somme += liste_observations[i][1]
+        cpt += 1
+    return somme/cpt
 
-
+def total_famille(liste_observations,listefamille):
+    res = []
+    ind1 = 0
+    ind2 = 0
+    while ind1 < liste_observations and ind2 < listefamille:
+        listefamille[ind2][1]
+        
 #--------------------------------------
 # PROGRAMME PRINCIPAL
 #--------------------------------------
