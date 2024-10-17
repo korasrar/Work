@@ -37,7 +37,10 @@ def test_moyenne_oiseaux_observes():
     assert oiseaux.moyenne_oiseaux_observes(oiseaux.observations3)==16/6
 
 def test_total_famille():
-    assert oiseaux.total_famille(...)==...
+    assert oiseaux.total_famille(oiseaux.observations1,oiseaux.oiseaux,"Turtidé")==2
+    assert oiseaux.total_famille(oiseaux.observations2,oiseaux.oiseaux,"Passereau")==8
+    assert oiseaux.total_famille(oiseaux.observations3,oiseaux.oiseaux,"Corvidé")==2
+    assert oiseaux.total_famille(oiseaux.observations1,oiseaux.oiseaux,"Picidae")==1
 
 
 def test_construire_liste_observations():

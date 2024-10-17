@@ -4,8 +4,8 @@
 
 # exemple de liste d'oiseaux observables
 oiseaux = [("Merle", "Turtidé"), ("Moineau", "Passereau"), ("Mésange", "Passereau"),
-           ("Pic vert", "Picidae"), ("Pie", "Corvidé"), ("Pinson", "Passereau"),
-           ("Rouge-gorge", "Passereau"), ("Tourterelle", "Colombidé")] 
+            ("Pic vert", "Picidae"), ("Pie", "Corvidé"), ("Pinson", "Passereau"),
+            ("Rouge-gorge", "Passereau"), ("Tourterelle", "Colombidé")] 
 
 # exemples de listes de comptage ces listes ont la même longueur que oiseaux
 comptage1 = [2, 5, 0, 1, 2, 0, 3, 5]
@@ -15,13 +15,13 @@ comptage3 = [0, 0, 4, 3, 2, 1, 2, 4]
 # exemples de listes d'observations. Notez que chaque liste correspond à la liste de comptage de
 # même numéro
 observations1 = [("Merle", 2), ("Moineau", 5), ("Pic vert", 1), ("Pie", 2),
-                 ("Rouge-gorge", 3), ("Tourterelle", 5)]
+                ("Rouge-gorge", 3), ("Tourterelle", 5)]
 
 observations2 = [("Merle", 2), ("Mésange", 1), ("Moineau", 3),
-                 ("Pinson", 3), ("Tourterelle", 5), ("Rouge-gorge", 1)]
+                ("Pinson", 3), ("Tourterelle", 5), ("Rouge-gorge", 1)]
 
 observations3 = [("Mésange", 4), ("Pic vert", 3), ("Pie", 2), ("Pinson", 1),
-                 ("Rouge-gorge", 2), ("Tourterelle", 4)]
+                ("Rouge-gorge", 2), ("Tourterelle", 4)]
 
 
 # --------------------------------------
@@ -98,13 +98,16 @@ def moyenne_oiseaux_observes(liste_observations):
         cpt += 1
     return somme/cpt
 
-def total_famille(liste_observations,listefamille):
-    res = []
-    ind1 = 0
-    ind2 = 0
-    while ind1 < liste_observations and ind2 < listefamille:
-        listefamille[ind2][1]
-        
+def total_famille(liste_observations,listefamille,famille):
+    res = 0
+    for i in range(len(liste_observations)):
+        for j in range(len(listefamille)):
+            if listefamille[j][1] == famille and liste_observations[i][0] == listefamille[j][0]:
+                res += liste_observations[i][1]
+    return res
+
+def construire_liste_observations():
+
 #--------------------------------------
 # PROGRAMME PRINCIPAL
 #--------------------------------------
