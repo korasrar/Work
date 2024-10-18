@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soirée Bowling</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./position.css">
+</head>
+<body>
+    <header>
+        <h1>Soirée bowling</h1>
+        <p>Inscriptions</p>
+    </header>
+    <form>
+        <fieldset class="id">
+            <legend>Je m'identifie</legend>
+            <div>
+                <label for="name">Mon prénom</label>
+                <input id="name" type="text" class="field-input" placeholder="Ex : Miss Fortune">
+            </div>
+            <div>
+                <label for="group">Mon groupe</label>
+                <select id="group">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div>
+                <label for="mail">Mon adresse mail</label>
+                <input id="mail" type="text" class="field-input" placeholder="missfortune@riot.lol">
+            </div>
+            <div>
+                <label for="mdp">Mon mot de passe</label>
+                <input id="mdp" type="text" class="field-input">
+            </div>
+        </fieldset>
+        <fieldset class="info">
+            <legend>J'informe</legend>
+            <div>
+                <p>Cochez les aliments que vous aimez manger:</p>
+            </div>
+            <ul>
+                <li>
+                    <input id="frites" type="checkbox">
+                    <label for="frites">Frites</label>
+                </li>
+                <li>
+                    <input id="steak" type="checkbox">
+                    <label for="steak">Steak haché</label>
+                </li>
+                <li>
+                    <input id="epinards" type="checkbox">
+                    <label for="epinards">Epinards</label>
+                </li>
+                <li>
+                    <input id="huitres" type="checkbox">
+                    <label for="huitres">Huitres</label>
+                </li>
+            </ul>
+            <div>
+                <p>Veuillez indiquer votre pointure:</p>
+            </div>
+            <ul>
+                <li>
+                    <input id="38" type="radio">
+                    <label for="38">Moins de 38</label>
+                </li>
+                <li>
+                    <input id="39" type="radio">
+                    <label for="39">Entre 39 et 40</label>
+                </li>
+                <li>
+                    <input id="41" type="radio">
+                    <label for="41">Entre 41 et 42</label>
+                </li>
+                <li>
+                    <input id="43" type="radio">
+                    <label for="43">Plus de 43</label>
+                </li>
+            </ul>
+            <div>
+                <label for="message">Je laisse un message (facultatif) :</label>
+            </div>
+            <div>
+                <textarea name="message" id="message" class="message" rows="8" cols="50"></textarea>
+            </div>
+            <div class="lastbox">
+                <input type="submit" class="submit" value="Je m'inscris">
+                <input type="reset" class="reset" value="Je rénitialise le formulaire">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

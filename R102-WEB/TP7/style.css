@@ -1,0 +1,38 @@
+header{
+    background-color: rgb(105, 105, 255);
+    border-radius: 15px;
+    border: 2px solid rgb(83, 83, 83);
+}
+
+.id legend{
+    font-weight: 700;
+}
+
+.id div{
+    margin: 10px;
+}
+
+.id input{
+    padding: 3px;
+}
+
+.info legend{
+    font-weight: 700;
+}
+
+.info ul{
+    list-style: none;
+}
+
+.lastbox,{
+    margin: 8px;
+}
+
+.submit, .reset{
+    margin: 2px;
+    padding: 3px;
+}
+
+.message{
+    
+}
