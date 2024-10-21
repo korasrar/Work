@@ -1,0 +1,25 @@
+header h1, header h2{
+    text-align: right;
+    margin-right: 20px;
+}
+
+.navfooter ul,.navheader ul{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.navfooter li, .navheader li{
+    flex-basis: 19%;
+    flex-grow: 1;
+}
+
+main{
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid red;
+}
+
+/*test*/
+.largesection{
+    border: 1px solid red;
+}
