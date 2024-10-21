@@ -21,5 +21,18 @@ main{
 
 /*test*/
 .largesection{
+    flex-basis: 75%;
+    flex-grow: 1;
     border: 1px solid red;
+}
+
+aside{
+    flex-basis: 25%;
+    flex-grow: 1;
+}
+
+footer h2{
+    text-align: right;
+    margin-right: 20px;
+    border-top-left-radius: 25px;
 }

@@ -2,3 +2,6 @@ ul{
     list-style: none;
 }
 
+footer h2{
+    border-top-left-radius: 100px;
+}
