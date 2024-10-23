@@ -81,7 +81,6 @@ def est_liste_observations(liste_observations):
         else:
             return False
     return res
-print(est_liste_observations(observations1))
 
 def max_observations(liste_observations):
     maxobserv = 0
@@ -124,7 +123,6 @@ def tab_observation(listefamille,liste_observations):
             if listefamille[j][0] in liste_observations[i] :
                 print("Nom: ",listefamille[j][0].ljust(12),"  Famille: ",listefamille[j][1].ljust(12),"  Nb observés: ",liste_observations[i][1])
     return ""
-print(tab_observation(oiseaux,observations1))
 
 #--------------------------------------
 # PROGRAMME PRINCIPAL
