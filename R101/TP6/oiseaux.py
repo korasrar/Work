@@ -124,6 +124,9 @@ def tab_observation(listefamille,liste_observations):
                 print("Nom: ",listefamille[j][0].ljust(12),"  Famille: ",listefamille[j][1].ljust(12),"  Nb observés: ",liste_observations[i][1])
     return ""
 
+def creer_ligne_sup(liste_observation,seuil):
+    
+
 #--------------------------------------
 # PROGRAMME PRINCIPAL
 #--------------------------------------
