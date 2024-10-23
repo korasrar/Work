@@ -1091,9 +1091,14 @@ def charger_activites(nom_fichier):
     Returns:
         list: la liste d'activités du fichier
     """
+    res = []
     fic = open(nom_fichier,'r')
     fic.readline()
+    for activite in fic:
+        l_activite = activite.split(",")
+        res.append((l_activite[0],l_activite[1],l_activite[2],l_activite[3]))
     fic.close
+    return res
 charger_activites("./SAE2/Bilan_Carbone_mysterieux_20241002/emissions_CO2_septembre_2024.csv")
 
 def sauver_activites(nom_fichier, liste_activites):
