@@ -106,7 +106,25 @@ def total_famille(liste_observations,listefamille,famille):
                 res += liste_observations[i][1]
     return res
 
-def construire_liste_observations():
+def construire_liste_observations(comptage,listefamille):
+    liste_observation = []
+    for i in range(len(comptage)):
+        liste_observation.append(tuple([listefamille[i][0],comptage[i]]))
+    return liste_observation
+
+def input_lisste_observations(listefamille):
+    liste_observation = []
+    for i in range(len(listefamille)):
+        liste_observation.append(tuple([listefamille[i][0],input("Combien de "+listefamille[i][0]+" as tu observé ? ")]))
+    return liste_observation
+
+def tab_observation(listefamille,liste_observations):
+    for j in range(len(listefamille)):# ou while
+        for i in range(len(liste_observations)):
+            if listefamille[j][0] in liste_observations[i] :
+                print("Nom: ",listefamille[j][0].ljust(12),"  Famille: ",listefamille[j][1].ljust(12),"  Nb observés: ",liste_observations[i][1])
+    return ""
+print(tab_observation(oiseaux,observations1))
 
 #--------------------------------------
 # PROGRAMME PRINCIPAL

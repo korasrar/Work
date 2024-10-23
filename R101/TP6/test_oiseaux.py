@@ -44,7 +44,9 @@ def test_total_famille():
 
 
 def test_construire_liste_observations():
-    assert oiseaux.construire_liste_observations(...)==...
+    assert oiseaux.construire_liste_observations(oiseaux.comptage1,oiseaux.oiseaux)==[('Merle', 2), ('Moineau', 5), ('Mésange', 0), ('Pic vert', 1), ('Pie', 2), ('Pinson', 0), ('Rouge-gorge', 3), ('Tourterelle', 5)]
+    assert oiseaux.construire_liste_observations(oiseaux.comptage2,oiseaux.oiseaux)==[('Merle', 2), ('Moineau', 1), ('Mésange', 3), ('Pic vert', 0), ('Pie', 0), ('Pinson', 3), ('Rouge-gorge', 5), ('Tourterelle', 1)]
+    assert oiseaux.construire_liste_observations(oiseaux.comptage3,oiseaux.oiseaux)==[('Merle', 0), ('Moineau', 0), ('Mésange', 4), ('Pic vert', 3), ('Pie', 2), ('Pinson', 1), ('Rouge-gorge', 2), ('Tourterelle', 4)]
 
 def test_creer_ligne_sup():
     assert oiseaux.creer_ligne_sup(...)==...
