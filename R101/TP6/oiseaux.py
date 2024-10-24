@@ -125,6 +125,7 @@ def tab_observation(listefamille,liste_observations):
     return ""
 
 def creer_ligne_sup(liste_observation,seuil):
+    jauge = ["   ","   ","   ","   ","   ","   "]
 
 #--------------------------------------
 # PROGRAMME PRINCIPAL
