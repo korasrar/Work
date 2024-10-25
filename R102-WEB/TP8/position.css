@@ -26,6 +26,24 @@ main{
     border: 1px solid red;
 }
 
+.sectionimg{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.sectionimg p{
+    flex-basis: 50%;
+    padding: 5px;
+}
+
+.sectionimg img{
+    flex-basis: 50%;
+    padding: 5px;
+    height: fit-content;
+    width: fit-content;
+    margin-top: 20px;
+}
+
 aside{
     flex-basis: 25%;
     flex-grow: 1;
