@@ -844,13 +844,18 @@ def est_avant(activite1, activite2): # DONE
     Returns:
         bool: True si activite1 est avant activite2, False sinon
     """
-    if activite1[3] < activite2[3]:
+    if activite1[3] < activite2[3]: 
         return True
-    elif activite1[0] < activite2[0]:
+    elif activite1[3] > activite2[3]:
+        return False
+    elif activite1[0] < activite2[0]: 
         return True
+    elif activite1[0] > activite2[0]:
+        return False
     elif activite1[1] < activite2[1]:
         return True
-    return False
+    else:
+        return False
 
 def annee(activite): #DONE
     """
@@ -1068,18 +1073,19 @@ def recherche_activite_dichotomique(prenom, jour, type, liste_activites):
     Returns:
         tuple: l'activité recherchée
     """
-    testact = (prenom,jour,0,type)
-    start = 0
-    finish = len(liste_activites)-1
-    while start <= finish:
-        mid = (start+finish)//2
-        if est_avant(testact,liste_activites[mid]) :
-            start = mid+1
-        elif not est_avant(testact,liste_activites[mid]):
-            finish = mid-1
-        else :
-            return True
-    return None
+    testact = (prenom, jour, 0, type) 
+    debut = 0
+    fin = len(liste_activites) - 1
+    while debut <= fin:
+        milieu = (debut + fin) // 2
+        activite_courante = liste_activites[milieu]
+        if est_avant(testact, liste_activites[milieu]):
+            fin = milieu - 1
+        elif est_avant(liste_activites[milieu], testact): 
+            debut = milieu + 1
+        else:
+            return liste_activites[milieu] 
+    return None 
 
 def charger_activites(nom_fichier):
     """
@@ -1132,8 +1138,10 @@ def temps_activite(activite, co2_minute):
     Returns:
         float: la durée de l'activité en minutes
     """
-    ...
-    
+    if activite[3] in co2_minute :
+        return activite[2]/co2_minute[activite[3]]
+    return None
+
 def cumul_temps_activite(liste_activites, co2_minute):
     """
     Retourne le temps total passé à réaliser des activités
