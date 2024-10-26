@@ -88,11 +88,14 @@ def test_charger_sauver():
 def test_temps_activite():
     assert bc.temps_activite(('Lucas', '2024-09-01', 67.2, 'type3'), bc.co2_minute) == 67.2/0.96
     assert bc.temps_activite(('Lucas', '2024-09-02', 70.08, 'type5'), bc.co2_minute) is None
+    assert bc.temps_activite(('Marx', '2024-09-01', 34.87, 'type1'), bc.co2_minute) == 34.87/0.87
+    assert bc.temps_activite(('korasrar', '2024-09-01', 75.34, 'type2'), bc.co2_minute) == 75.34/0.65
 
 def test_cumul_temps_activite():
     assert bc.cumul_temps_activite([], bc.co2_minute) == 0
     assert bc.cumul_temps_activite([('Lucas', '2024-09-01', 67.2, 'type3')], bc.co2_minute) == 67.2/0.96
-
+    assert bc.cumul_temps_activite(bc.liste4, bc.co2_minute) == 113.97414845690707
+    assert bc.cumul_temps_activite(bc.liste5, bc.co2_minute) == 43734.0
 # ---------------------------------------------------------------------------------------------
 # Ajoutez ici les tests manquants (vos propres fonctions le cas échéant)
 # ---------------------------------------------------------------------------------------------

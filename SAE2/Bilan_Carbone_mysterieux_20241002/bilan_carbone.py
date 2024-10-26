@@ -1152,4 +1152,9 @@ def cumul_temps_activite(liste_activites, co2_minute):
     Returns:
         int: le temps total passé à réaliser des activités
     """
-    ...
+    somme = 0
+    for i in range(len(liste_activites)):
+        if liste_activites[i][3] in co2_minute :
+            somme += liste_activites[i][2]/co2_minute[liste_activites[i][3]]
+    return somme
+print(cumul_temps_activite(liste5,co2_minute))
