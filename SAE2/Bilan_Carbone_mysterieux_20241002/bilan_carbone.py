@@ -1110,11 +1110,10 @@ def sauver_activites(nom_fichier, liste_activites):
         liste_activites (list): la liste d'activités à sauvegarder
     """
     fic = open(nom_fichier,'w')
-    fic.write('Prénom,Date,Emissions_CO2 (g),Type_Activité')
+    fic.write('Prénom,Date,Emissions_CO2 (g),Type_Activité \n')
     for i in range(len(liste_activites)):
         fic.write(liste_activites[i][0]+","+liste_activites[i][1]+","+str(liste_activites[i][2])+","+liste_activites[i][3]+"\n")
     fic.close
-sauver_activites('caca.csv',liste1)
 
 # ---------------------------------------------------------------------------------------------
 # Dictionnaire python (structure de données non-encore étudiée en cours)
