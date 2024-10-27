@@ -37,11 +37,12 @@ def programme_principal():
                 "Sauvegarder liste en fichier csv",
                 "Quitter"]
     liste_chargée = []
+    saveliste = []
     fichierchargé = False
     quitter = False
     while not fichierchargé :
         try:
-            bc.charger_activites(input("Veuillez entrer le nom d'un fichier csv : "))
+            liste_chargée = bc.charger_activites(input("Veuillez entrer le nom d'un fichier csv : "))
         except:
             print("Fichier inexistant, Recommencer !")
         else:
@@ -59,9 +60,15 @@ def programme_principal():
 
         elif rep == 3:
             print("Vous avez choisi", liste_options[rep - 1])
-
+            nomfichier = input("Entrer le nom de la personne : ")
+            print(bc.filtre(liste_chargée,0,nomfichier))
+            saveliste = bc.filtre(liste_chargée,0,nomfichier)
         elif rep == len(liste_options):
             quitter = True
+        if saveliste != []:
+            if input("Voulez vous sauvegarder la liste créer dans un fichier csv ? (y/n) : ") == y:
+                bc.sauver_activites(input("Entrer le nom du fichier : ",saveliste))
+                saveliste = []
         input("Appuyer sur Entrée pour continuer")
     print("Merci au revoir!")
 
