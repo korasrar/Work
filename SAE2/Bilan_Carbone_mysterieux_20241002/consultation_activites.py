@@ -54,7 +54,6 @@ def programme_principal():
         else:
             fichierchargé = True
             print("FICHIER CHARGER")
-    askname
     while not quitter:
         rep = menu("MENU DE MON APPLICATION", liste_options)
         if rep is None:
