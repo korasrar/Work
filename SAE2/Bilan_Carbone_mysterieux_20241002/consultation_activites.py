@@ -34,7 +34,6 @@ def programme_principal():
                 "Activité la plus polluante d'une certaine personne",
                 "Pourcentage de personne pratiquant une activité",
                 "Tendance",
-                "Sauvegarder liste en fichier csv",
                 "Quitter"]
     liste_chargée = []
     saveliste = []
