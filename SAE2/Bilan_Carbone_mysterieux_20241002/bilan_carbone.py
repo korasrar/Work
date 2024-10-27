@@ -1114,6 +1114,7 @@ def sauver_activites(nom_fichier, liste_activites):
         nom_fichier (str): le nom du fichier CSV où sauvegarder les activités
         liste_activites (list): la liste d'activités à sauvegarder
     """
+    #"fichiercsv_save"+
     with open(nom_fichier, 'w') as fic:
         fic.write('Prénom,Date,Emissions_CO2 (g),Type_Activité \n')
         for i in range(len(liste_activites)):

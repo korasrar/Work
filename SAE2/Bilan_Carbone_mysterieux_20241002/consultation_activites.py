@@ -67,15 +67,17 @@ def programme_principal():
             nom = askname(liste_chargée)
             print(bc.filtre(liste_chargée,0,nom))
             saveliste = bc.filtre(liste_chargée,0,nom)
-        elif rep == 3:
+        elif rep == 3: # ACTIVITE LA PLUS POLLUANTE ------------------------
             print("Vous avez choisi", liste_options[rep - 1])
+            nom = askname(liste_chargée)
+            print(bc.max_emmission(bc.filtre(liste_chargée,0,nom)))
         elif rep == len(liste_options):
             quitter = True
         if saveliste != []:
             if input("Voulez vous sauvegarder la liste créer dans un fichier csv ? (y/n) : ") == 'y':
-                bc.sauver_activites(input("Entrer le nom du fichier : ",saveliste))
-                saveliste = []
+                bc.sauver_activites(input("Entrer le nom du fichier (oublier pas le .csv) : "),saveliste)
                 print("Fichier sauvegarder !")
+        saveliste = []
         input("Appuyer sur Entrée pour continuer")
     print("Merci au revoir!")
 
