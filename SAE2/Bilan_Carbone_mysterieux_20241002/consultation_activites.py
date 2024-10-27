@@ -28,10 +28,9 @@ def menu(titre, liste_options):
 # ici votre programme principal
 def programme_principal():
     liste_options = [
-                "Bilan Carbone pour un certain mois",
-                "Bilan Carbone pour une certaine année",
-                "Liste activité d'une certaine personne",
-                "Activité la plus polluante d'une certaine personne",
+                "Bilan Carbone pour septembre",
+                "Liste activité",
+                "Activité la plus polluante",
                 "Pourcentage de personne pratiquant une activité",
                 "Tendance",
                 "Quitter"]
@@ -53,15 +52,15 @@ def programme_principal():
             print("Cette option n'existe pas")
         elif rep == 1:
             print("Vous avez choisi", liste_options[rep - 1])
-
+            nom = input("Entrer le nom de la personne : ")
+            print(bc.cumul_emmissions(bc.filtre(liste_chargée,0,nom)))
         elif rep == 2:
             print("Vous avez choisi", liste_options[rep - 1])
-
         elif rep == 3:
             print("Vous avez choisi", liste_options[rep - 1])
-            nomfichier = input("Entrer le nom de la personne : ")
-            print(bc.filtre(liste_chargée,0,nomfichier))
-            saveliste = bc.filtre(liste_chargée,0,nomfichier)
+            nom = input("Entrer le nom de la personne : ")
+            print(bc.filtre(liste_chargée,0,nom))
+            saveliste = bc.filtre(liste_chargée,0,nom)
         elif rep == len(liste_options):
             quitter = True
         if saveliste != []:

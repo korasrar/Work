@@ -1098,12 +1098,11 @@ def charger_activites(nom_fichier):
         list: la liste d'activités du fichier
     """
     res = []
-    fic = open(nom_fichier,'r')
-    fic.readline()
-    for activite in fic:
-        l_activite = activite.split(",")
-        res.append((l_activite[0],l_activite[1],float(l_activite[2]),l_activite[3]))
-    fic.close
+    with open(nom_fichier, 'r') as fic:
+        fic.readline()
+        for activite in fic:
+            l_activite = activite.strip().split(",")
+            res.append((l_activite[0],l_activite[1],float(l_activite[2]),l_activite[3]))
     return res
 #print(charger_activites("./SAE2/Bilan_Carbone_mysterieux_20241002/emissions_CO2_septembre_2024.csv"))
 
@@ -1115,11 +1114,10 @@ def sauver_activites(nom_fichier, liste_activites):
         nom_fichier (str): le nom du fichier CSV où sauvegarder les activités
         liste_activites (list): la liste d'activités à sauvegarder
     """
-    fic = open(nom_fichier,'w')
-    fic.write('Prénom,Date,Emissions_CO2 (g),Type_Activité \n')
-    for i in range(len(liste_activites)):
-        fic.write(liste_activites[i][0]+","+liste_activites[i][1]+","+str(liste_activites[i][2])+","+liste_activites[i][3]+"\n")
-    fic.close
+    with open(nom_fichier, 'w') as fic:
+        fic.write('Prénom,Date,Emissions_CO2 (g),Type_Activité \n')
+        for i in range(len(liste_activites)):
+            fic.write(liste_activites[i][0]+","+liste_activites[i][1]+","+str(liste_activites[i][2])+","+liste_activites[i][3]+"\n")
 
 # ---------------------------------------------------------------------------------------------
 # Dictionnaire python (structure de données non-encore étudiée en cours)
