@@ -15,17 +15,43 @@ def afficher_menu(titre, liste_options):
         print("[",i+1,"]",liste_options[i])
 
 def demander_nombre(message, borne_max):
+    """Demande le nombre de l'option a chosir et retourne None si elle existe pas 
+
+    Args:
+        message (str): Le message qui s'affichera dans le terminal
+        borne_max (int): Le nombre de la dernière option
+
+    Returns:
+        int or NoneType: la valeur de l'option ou None
+    """    
     rep = int(input(message))
     if str(rep).isdecimal() and rep <= borne_max:
         return int(rep)
     return None
 
-def menu(titre, liste_optionsmenu):
+def menu(titre, liste_options):
+    """Affiche le menu et la demande de selection de l'option
+
+    Args:
+        titre (str): Titre du menu
+        liste_optionsmenu (liste): La liste d'options
+
+    Returns:
+        str: La demande de selection
+    """    
     afficher_menu(titre,liste_optionsmenu)
-    repasknb = demander_nombre("Entrez votre choix [1-"+str(len(liste_optionsmenu))+"] : ",len(liste_optionsmenu))
+    repasknb = demander_nombre("Entrez votre choix [1-"+str(len(liste_options))+"] : ",len(liste_optionsmenu))
     return repasknb
 
 def askname(liste_chargee):
+    """Demande le nom d'une personne et vérifie si elle est dans la liste chargée
+
+    Args:
+        liste_chargee (liste): Liste chargée par l'utilisateur
+
+    Returns:
+        str: Le nom de la personne
+    """    
     check = False
     while not check:
         name = input("Entrer le nom de la personne : ")
@@ -36,6 +62,14 @@ def askname(liste_chargee):
     return name
 
 def askdate(liste_chargee):
+    """Demande la date et vérifie si elle est dans la liste chargée
+
+    Args:
+        liste_chargee (liste): Liste chargée par l'utilisateur
+
+    Returns:
+        str: La date
+    """  
     check = False
     while not check:
         date = input("Entrer la date a chercher : ")
@@ -46,6 +80,14 @@ def askdate(liste_chargee):
     return date
 
 def asktype(liste_chargee):
+    """Demande le type et vérifie si elle est dans la liste chargée
+
+    Args:
+        liste_chargee (list): Liste chargée par l'utilisateur
+
+    Returns:
+        str: Le type
+    """  
     check = False
     while not check:
         type = input("Entrer le type a chercher : ")
@@ -56,6 +98,11 @@ def asktype(liste_chargee):
     return type
 
 def loadfile():
+    """Demande le fichier .csv a charger et le charge si il existe
+
+    Returns:
+        list: La liste créer a partir du contenu du fichier
+    """    
     liste_chargee = []
     fichierchargé = False
     while not fichierchargé :
@@ -69,6 +116,15 @@ def loadfile():
             return liste_chargee
 
 def askfiltre(liste_options,liste_chargee):
+    """Demande le filtre a appliqué pour une future recherche dans la liste chargée
+
+    Args:
+        liste_options (_type_): Liste des filtres
+        liste_chargee (_type_): Liste chargée par l'utilisateur
+
+    Returns:
+        int: Numéro de l'option sélectioner 
+    """    
     quitter = False
     while not quitter :
         rep = menu("CHOIX DU FILTRE",liste_options)
@@ -97,7 +153,7 @@ def programme_principal():
                 "Activité la plus polluante",
                 "Moyenne émission de carbone en septembre",
                 "Pourcentage de personne pratiquant une activité",
-                "Tendance",
+                "Durée moyenne de pratique",
                 "Charger un nouveaux fichier",
                 "Quitter"]
     liste_optionsfiltre = [
@@ -136,8 +192,10 @@ def programme_principal():
             type = asktype(liste_chargee)
             pourcentage = (len(bc.filtre(liste_chargee,3,type))/len(liste_chargee))*100
             print(round(pourcentage,2),"% des activitées qui sont de",type)
-        elif rep == 6: # TENDANCE ------------------------------
+        elif rep == 6: # DUREE MOYENNE DE PRATIQUE -------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
+            type = asktype(liste_chargee)
+            print("La durée moyenne de pratique des activitées de ",type," est de : ",bc.cumul_temps_activite(liste_chargee,bc.co2_minute))
         elif rep == 7: # CHARGER NOUVEAU FICHIER ---------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             loadfile()
