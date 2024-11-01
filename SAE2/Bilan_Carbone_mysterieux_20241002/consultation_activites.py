@@ -39,8 +39,8 @@ def menu(titre, liste_options):
     Returns:
         str: La demande de selection
     """    
-    afficher_menu(titre,liste_optionsmenu)
-    repasknb = demander_nombre("Entrez votre choix [1-"+str(len(liste_options))+"] : ",len(liste_optionsmenu))
+    afficher_menu(titre,liste_options)
+    repasknb = demander_nombre("Entrez votre choix [1-"+str(len(liste_options))+"] : ",len(liste_options))
     return repasknb
 
 def askname(liste_chargee):
@@ -58,7 +58,8 @@ def askname(liste_chargee):
         for activite in liste_chargee:
             if name == activite[0]:
                 check = True
-        print("Nom introuvable dans la liste. Réessayer.")
+        if not check :
+            print("Nom introuvable dans la liste. Réessayer.")
     return name
 
 def askdate(liste_chargee):
@@ -76,7 +77,8 @@ def askdate(liste_chargee):
         for activite in liste_chargee:
             if date == activite[1]:
                 check = True
-        print("Date introuvable dans la liste. Réessayer.")
+        if not check :
+            print("Date introuvable dans la liste. Réessayer.")
     return date
 
 def asktype(liste_chargee):
@@ -94,7 +96,8 @@ def asktype(liste_chargee):
         for activite in liste_chargee:
             if type == activite[3]:
                 check = True
-        print("Type introuvable dans la liste. Réessayer.")
+        if not check :
+            print("Type introuvable dans la liste. Réessayer.")
     return type
 
 def loadfile():
@@ -144,6 +147,11 @@ def askfiltre(liste_options,liste_chargee):
             quitter = True
     return res
 
+def requestfiltre(liste_options,liste_chargee):
+    if input("Voulez vous appliquer un filtre ? (y/n) : ") == 'y':
+        return askfiltre(liste_options,liste_chargee)
+    else :
+        return liste_chargee
 
 # ici votre programme principal
 def programme_principal():
@@ -154,6 +162,7 @@ def programme_principal():
                 "Moyenne émission de carbone en septembre",
                 "Pourcentage de personne pratiquant une activité",
                 "Durée moyenne de pratique",
+                "Recherche d'une actvité",
                 "Charger un nouveaux fichier",
                 "Quitter"]
     liste_optionsfiltre = [
@@ -180,13 +189,12 @@ def programme_principal():
             saveliste = listefiltre
         elif rep == 3: # ACTIVITE LA PLUS POLLUANTE ------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
-            nom = askname(liste_chargee)
-            print(bc.max_emmission(bc.filtre(liste_chargee,0,nom)))
+            refiltre = requestfiltre(liste_optionsfiltre,liste_chargee)
+            print(bc.max_emmission(refiltre))
         elif rep == 4: # MOYENNE EMISSION SEPTEMBRE ------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
-            nom = askname(liste_chargee)
-            filtre = bc.filtre(liste_chargee,0,nom)
-            print("Moyenne de",nom,"sur septembre : ",bc.cumul_emmissions(filtre)//len(filtre),"g")
+            refiltre = requestfiltre(liste_optionsfiltre,liste_chargee)
+            print("Moyenne d'emission de la liste (filtré ou non) sur septembre : ",bc.cumul_emmissions(refiltre)//len(refiltre),"g")
         elif rep == 5: # POURCENTAGE ACTIVITE ------------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             type = asktype(liste_chargee)
@@ -195,8 +203,19 @@ def programme_principal():
         elif rep == 6: # DUREE MOYENNE DE PRATIQUE -------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             type = asktype(liste_chargee)
-            print("La durée moyenne de pratique des activitées de ",type," est de : ",bc.cumul_temps_activite(liste_chargee,bc.co2_minute))
-        elif rep == 7: # CHARGER NOUVEAU FICHIER ---------------------------
+            tempsmoyen = bc.cumul_temps_activite(liste_chargee,bc.co2_minute)/len(bc.filtre(liste_chargee,3,type))
+            print("La durée moyenne de pratique des activitées de ",type," est de : ",round(tempsmoyen,2)," min")
+        elif rep == 7: # RECHERCHE D'UNE ACTIVITE --------------------------
+            print("Vous avez choisi", liste_optionsmenu[rep - 1])
+            name = askname(liste_chargee)
+            type = asktype(liste_chargee)
+            date = askdate(liste_chargee)
+            recherche = bc.recherche_activite_dichotomique(name,date,type,liste_chargee)
+            if recherche != None :
+                print("Voici l'activité qui correspond a vos critères : ",recherche)
+            else :
+                print("Aucune activité trouvé.")
+        elif rep == 8: # CHARGER NOUVEAU FICHIER ---------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             loadfile()
         elif rep == len(liste_optionsmenu):

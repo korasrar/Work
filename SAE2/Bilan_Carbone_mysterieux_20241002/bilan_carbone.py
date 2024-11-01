@@ -929,7 +929,7 @@ def filtre(liste_activites, num_critere, val_critere): #DONE
     """
     listecrit = []
     for i in range(len(liste_activites)):
-        if liste_activites[i][num_critere] == val_critere :
+        if num_critere < len(liste_activites[i]) and liste_activites[i][num_critere] == val_critere :
             listecrit.append(liste_activites[i])
     return listecrit
 
