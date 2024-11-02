@@ -1104,7 +1104,6 @@ def charger_activites(nom_fichier):
             l_activite = activite.strip().split(",")
             res.append((l_activite[0],l_activite[1],float(l_activite[2]),l_activite[3]))
     return res
-#print(charger_activites("./SAE2/Bilan_Carbone_mysterieux_20241002/emissions_CO2_septembre_2024.csv"))
 
 def sauver_activites(nom_fichier, liste_activites):
     """

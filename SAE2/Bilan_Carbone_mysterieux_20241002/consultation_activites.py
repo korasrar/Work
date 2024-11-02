@@ -23,11 +23,14 @@ def demander_nombre(message, borne_max):
 
     Returns:
         int or NoneType: la valeur de l'option ou None
-    """    
-    rep = int(input(message))
-    if str(rep).isdecimal() and rep <= borne_max:
-        return int(rep)
-    return None
+    """
+    try :    
+        rep = int(input(message))
+        if str(rep).isdecimal() and rep <= borne_max:
+            return int(rep)
+        return None
+    except ValueError:
+        return None
 
 def menu(titre, liste_options):
     """Affiche le menu et la demande de selection de l'option
@@ -118,6 +121,11 @@ def loadfile():
             print("FICHIER CHARGER !")
             return liste_chargee
 
+def askfusion(listefusion):
+    if input("Voulez vous fusionner la liste créer avec une autre liste ? (y/n) : ") == "y":
+        createliste = bc.fusionner_activites(loadfile(),listefusion)
+        bc.sauver_activites(input("Entrer le nom du fichier (oublier pas le .csv) : "),createliste)
+
 def askfiltre(liste_options,liste_chargee):
     """Demande le filtre a appliqué pour une future recherche dans la liste chargée
 
@@ -158,12 +166,14 @@ def programme_principal():
     liste_optionsmenu = [
                 "Bilan Carbone pour septembre",
                 "Liste activité avec filtre",
+                "Cumul temps activité avec filtre",
                 "Activité la plus polluante",
                 "Moyenne émission de carbone en septembre",
                 "Pourcentage de personne pratiquant une activité",
                 "Durée moyenne de pratique",
                 "Recherche d'une actvité",
                 "Charger un nouveaux fichier",
+                "Fusion a partir de liste chargée",
                 "Quitter"]
     liste_optionsfiltre = [
                 "Prénom",
@@ -181,31 +191,35 @@ def programme_principal():
         elif rep == 1: # BILAN CARBONE MOIS DE SEPTEMBRE -------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             nom = askname(liste_chargee)
-            print("Bilan carbone de ",nom," : ",bc.cumul_emmissions(bc.filtre(liste_chargee,0,nom)),"g")
+            print("Bilan carbone de",nom,":",bc.cumul_emmissions(bc.filtre(liste_chargee,0,nom)),"g")
         elif rep == 2: # LISTE ACTIVITE ------------------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             listefiltre = askfiltre(liste_optionsfiltre,liste_chargee)
             print(listefiltre)
-            saveliste = listefiltre
-        elif rep == 3: # ACTIVITE LA PLUS POLLUANTE ------------------------
+            saveliste = listefiltre    
+        elif rep == 3: # CUMUL TEMPS ACTIVITE ------------------------------
+            print("Vous avez choisi", liste_optionsmenu[rep - 1])
+            refiltre = requestfiltre(liste_optionsfiltre,liste_chargee)
+            print("Le cumul de temps des activitées de la liste (filtré ou non) est de : ",bc.cumul_temps_activite(refiltre,bc.co2_minute))
+        elif rep == 4: # ACTIVITE LA PLUS POLLUANTE ------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             refiltre = requestfiltre(liste_optionsfiltre,liste_chargee)
             print(bc.max_emmission(refiltre))
-        elif rep == 4: # MOYENNE EMISSION SEPTEMBRE ------------------------
+        elif rep == 5: # MOYENNE EMISSION SEPTEMBRE ------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             refiltre = requestfiltre(liste_optionsfiltre,liste_chargee)
             print("Moyenne d'emission de la liste (filtré ou non) sur septembre : ",bc.cumul_emmissions(refiltre)//len(refiltre),"g")
-        elif rep == 5: # POURCENTAGE ACTIVITE ------------------------------
+        elif rep == 6: # POURCENTAGE ACTIVITE ------------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             type = asktype(liste_chargee)
             pourcentage = (len(bc.filtre(liste_chargee,3,type))/len(liste_chargee))*100
             print(round(pourcentage,2),"% des activitées qui sont de",type)
-        elif rep == 6: # DUREE MOYENNE DE PRATIQUE -------------------------
+        elif rep == 7: # DUREE MOYENNE DE PRATIQUE -------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             type = asktype(liste_chargee)
             tempsmoyen = bc.cumul_temps_activite(liste_chargee,bc.co2_minute)/len(bc.filtre(liste_chargee,3,type))
-            print("La durée moyenne de pratique des activitées de ",type," est de : ",round(tempsmoyen,2)," min")
-        elif rep == 7: # RECHERCHE D'UNE ACTIVITE --------------------------
+            print("La durée moyenne de pratique des activitées de",type,"est de :",round(tempsmoyen,2),"min")
+        elif rep == 8: # RECHERCHE D'UNE ACTIVITE --------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             name = askname(liste_chargee)
             type = asktype(liste_chargee)
@@ -215,15 +229,20 @@ def programme_principal():
                 print("Voici l'activité qui correspond a vos critères : ",recherche)
             else :
                 print("Aucune activité trouvé.")
-        elif rep == 8: # CHARGER NOUVEAU FICHIER ---------------------------
+        elif rep == 9: # CHARGER NOUVEAU FICHIER ---------------------------
             print("Vous avez choisi", liste_optionsmenu[rep - 1])
             loadfile()
-        elif rep == len(liste_optionsmenu):
+        elif rep == 10: # FUSION AVEC LISTE CHARGEE ------------------------
+            print("Vous avez choisi", liste_optionsmenu[rep - 1])
+            askfusion(liste_chargee)
+        elif rep == len(liste_optionsmenu): # QUITTER ----------------------
             quitter = True
         if saveliste != []:
             if input("Voulez vous sauvegarder la liste créer dans un fichier csv ? (y/n) : ") == 'y':
                 bc.sauver_activites(input("Entrer le nom du fichier (oublier pas le .csv) : "),saveliste)
                 print("Fichier sauvegarder !")
+            else :
+                askfusion(saveliste)
         saveliste = []
         input("Appuyer sur Entrée pour continuer")
     print("Merci au revoir!")
