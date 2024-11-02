@@ -122,6 +122,11 @@ def loadfile():
             return liste_chargee
 
 def askfusion(listefusion):
+    """Permet de fusionner les listes créer par l'application
+
+    Args:
+        listefusion (liste): Liste qui va être fusionner
+    """    
     if input("Voulez vous fusionner la liste créer avec une autre liste ? (y/n) : ") == "y":
         createliste = bc.fusionner_activites(loadfile(),listefusion)
         bc.sauver_activites(input("Entrer le nom du fichier (oublier pas le .csv) : "),createliste)
