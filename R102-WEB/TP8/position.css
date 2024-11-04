@@ -1,6 +1,15 @@
 header h1, header h2{
-    text-align: right;
-    margin-right: 20px;
+    text-align: left;
+    margin-left: 55%;
+}
+
+header h1{
+    font-size: 3em;
+    container-name: test
+}
+
+header h2{
+    font-size: 2em;
 }
 
 .navfooter ul,.navheader ul{
@@ -39,8 +48,8 @@ main{
 .sectionimg img{
     flex-basis: 50%;
     padding: 5px;
-    height: fit-content;
-    width: fit-content;
+    height: 300px;
+    width: 300px;
     margin-top: 20px;
 }
 
