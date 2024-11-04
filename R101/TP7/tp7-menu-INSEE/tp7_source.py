@@ -97,4 +97,4 @@ def sauve_population_dpt(nom_fic, liste_pop_dep):
     ...
 
 # appel au programme principal
-#programme_principal()
+programme_principal()
