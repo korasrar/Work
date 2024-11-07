@@ -1,6 +1,5 @@
 # TP8 B - Manipuler des listes, ensembles et dictionnaires
 
-
 def total_animaux(troupeau):
     """ Calcule le nombre total d'animaux dans un troupeau
 
@@ -14,7 +13,6 @@ def total_animaux(troupeau):
     for num in troupeau.values():
         somme += num
     return somme
-
 
 def tous_les_animaux(troupeau):
     """ Détermine l'ensemble des animaux dans un troupeau
@@ -44,7 +42,6 @@ def specialise(troupeau):
         if num > 30 :
             return True
     return False
-
 
 def le_plus_represente(troupeau):
     """ Recherche le nom de l'animal qui a le plus d'individus dans le troupeau
@@ -81,7 +78,6 @@ def quantite_suffisante(troupeau):
             return False
     return True
 
-
 def reunion_troupeaux(troupeau1, troupeau2):
     """ Simule la réunion de deux troupeaux
 
@@ -103,5 +99,4 @@ def reunion_troupeaux(troupeau1, troupeau2):
             else:
                 troupeaufinale[animal] = num
     return troupeaufinale
-print(reunion_troupeaux({'veau':14, 'vache':7, 'poule':42} , {'vache':3,'ane':60,'poule':37,'cochon':1,'lombric':7}))
 
