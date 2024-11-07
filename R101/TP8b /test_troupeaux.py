@@ -56,14 +56,19 @@ def test_reunion_troupeaux():
     troupeau_vide = dict()    
     mon_troupeau = {'vache':3,'ane':60,'poule':37,'cochon':1,'lombric':7} 
     assert troupeaux.reunion_troupeaux(troupeau_de_perrette, troupeau_vide) == troupeau_de_perrette
+    troupeau_de_jean = {'vache':12, 'cochon':17, 'veau':3}
+    troupeau_de_perrette = {'veau':14, 'vache':7, 'poule':42}
     assert troupeaux.reunion_troupeaux(troupeau_vide, troupeau_de_jean) == troupeau_de_jean
+    troupeau_de_jean = {'vache':12, 'cochon':17, 'veau':3}
+    troupeau_de_perrette = {'veau':14, 'vache':7, 'poule':42}
     assert troupeaux.reunion_troupeaux(troupeau_de_perrette, troupeau_de_jean) == {'vache':12+7, 'cochon':17, 'veau':3+14, 'poule':42}
-    assert troupeau_de_jean == {'vache':12, 'cochon':17, 'veau':3}
-    assert troupeau_de_perrette == {'veau':14, 'vache':7, 'poule':42}
+    troupeau_de_jean = {'vache':12, 'cochon':17, 'veau':3}
+    troupeau_de_perrette = {'veau':14, 'vache':7, 'poule':42}
     assert troupeaux.reunion_troupeaux(troupeau_de_perrette, mon_troupeau) == {'veau': 14, 'vache': 10, 'poule': 79, 'ane': 60, 'cochon': 1, 'lombric': 7}
+    troupeau_de_jean = {'vache':12, 'cochon':17, 'veau':3}
+    troupeau_de_perrette = {'veau':14, 'vache':7, 'poule':42}
+    mon_troupeau = {'vache':3,'ane':60,'poule':37,'cochon':1,'lombric':7}
     assert troupeaux.reunion_troupeaux(mon_troupeau, troupeau_de_jean) == {'vache': 15, 'ane': 60, 'poule': 37, 'cochon': 18, 'lombric': 7, 'veau': 3}
-    assert troupeau_de_jean == {'vache':12, 'cochon':17, 'veau':3}
-    assert troupeau_de_perrette == {'veau':14, 'vache':7, 'poule':42}
 
 
 

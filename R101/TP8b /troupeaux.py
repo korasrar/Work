@@ -78,6 +78,10 @@ def quantite_suffisante(troupeau):
             return False
     return True
 
+troupeau_de_jean = {'vache':12, 'cochon':17, 'veau':3}
+troupeau_de_perrette = {'veau':14, 'vache':7, 'poule':42}
+troupeau_vide = dict()  
+
 def reunion_troupeaux(troupeau1, troupeau2):
     """ Simule la réunion de deux troupeaux
 
@@ -88,12 +92,10 @@ def reunion_troupeaux(troupeau1, troupeau2):
     Returns:
         dict: le dictionnaire modélisant la réunion des deux troupeaux    
     """
-    troupeaufinale = {}
     for animal,num in troupeau1.items():
-        troupeaufinale[animal] = num
         if animal in troupeau2 :
-            troupeaufinale[animal] += num
+            troupeau2[animal] += num
         else:
-            troupeaufinale[animal] = num
-    return troupeaufinale
-print(reunion_troupeaux({'veau':14, 'vache':7, 'poule':42},{'vache':12, 'cochon':17, 'veau':3})) 
+            troupeau2[animal] = num
+    return troupeau2
+print(reunion_troupeaux(troupeau_de_perrette,troupeau_vide))
