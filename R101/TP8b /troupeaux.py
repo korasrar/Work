@@ -89,14 +89,11 @@ def reunion_troupeaux(troupeau1, troupeau2):
         dict: le dictionnaire modélisant la réunion des deux troupeaux    
     """
     troupeaufinale = {}
-    if len(troupeau1) != 0:
-        for animal,num in troupeau1.items():
+    for animal,num in troupeau1.items():
+        troupeaufinale[animal] = num
+        if animal in troupeau2 :
+            troupeaufinale[animal] += num
+        else:
             troupeaufinale[animal] = num
-    if len(troupeau2) != 0:
-        for animal,num in troupeau2.items():
-            if animal in troupeaufinale :
-                troupeaufinale[animal] += num
-            else:
-                troupeaufinale[animal] = num
     return troupeaufinale
-
+print(reunion_troupeaux({'veau':14, 'vache':7, 'poule':42},{'vache':12, 'cochon':17, 'veau':3})) 
