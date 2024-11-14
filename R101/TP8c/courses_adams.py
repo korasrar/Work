@@ -105,6 +105,9 @@ def namearticle_maxMercredi(courses):
             articlemax = article
     return articlemax
 
+# -- EX3 -----------------------------------
+
+
 # ------------------------------------------
 
 def ajt_article(courses,nom,prix):
