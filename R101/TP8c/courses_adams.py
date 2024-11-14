@@ -1,23 +1,54 @@
 # liste dans tuple ? onjectif meme parametre (api)
 def ajt_articlemorticia(courses,nom,prix):
     check = False
-    for article in courses:
+    for article in courses[0]:
         if article == nom:
             check = True
-    if check == False:
-        courses.append(nom)
+    if not check:
+        courses[0].append(nom)
+        courses[1].append(prix)
+    else: 
+        print("Article déja présent dans la liste de courses")
 
 def sup_articlemorticia(courses,nom):
-    f
+    check = False
+    saveart = 0
+    for i in range(len(courses[0])):
+        if courses[0][i] == nom:
+            check = True
+            saveart = i
+    if check:
+        courses[0].pop(saveart)
+        courses[1].pop(saveart)
+    else : 
+        print("Article pas présent dans la liste de courses")
 
 def changepricemorticia(courses,nom,nvprix):
-    f
+    check = False
+    saveart = 0
+    for i in range(len(courses[0])):
+        if courses[0][i] == nom:
+            check = True
+            saveart = i
+    if check:
+        courses[1][i] = nvprix
+    else :
+        print("Article pas présent dans la liste de courses")
 
 def totalpricemorticia(courses):
-    f
+    total = 0 
+    for prix in courses[1]:
+        total += prix
+    return total
 
 def namearticle_maxmorticia(courses):
-    f
+    saveprix = 0
+    prixmax = 0
+    for i in range(len(courses[1])):
+        if prixmax < courses[1][i]:
+            prixmax = courses[1][i]
+            saveprix = i 
+    return courses[0][saveprix]
 
 # ------------------------------------------
 

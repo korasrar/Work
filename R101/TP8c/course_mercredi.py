@@ -66,8 +66,57 @@ def creerlistecourse():
     return courses
 print(creerlistecourse())
 
-def menu():
-    
+def afficher_menu(titre, liste_options):
+    """Fonction qui permet d'afficher le menu de l'application
+
+    Args:
+        titre (str): Titre de l'application
+        liste_optionsmenu (list): Liste des options a sélectionner par l'utilisateur
+    """    
+    print("+-------------------------+")
+    print("|",titre,"|")
+    print("+-------------------------+")
+    for i in range(len(liste_options)):
+        print("[",i+1,"]",liste_options[i])
+
+def demander_nombre(message, borne_max):
+    """Demande le nombre de l'option a chosir et retourne None si elle existe pas 
+
+    Args:
+        message (str): Le message qui s'affichera dans le terminal
+        borne_max (int): Le nombre de la dernière option
+
+    Returns:
+        int or NoneType: la valeur de l'option ou None
+    """
+    try :    
+        rep = int(input(message))
+        if str(rep).isdecimal() and rep <= borne_max:
+            return int(rep)
+        return None
+    except ValueError:
+        return None
+
+def menu(titre, liste_options):
+    """Affiche le menu et la demande de selection de l'option
+
+    Args:
+        titre (str): Titre du menu
+        liste_optionsmenu (liste): La liste d'options
+
+    Returns:
+        str: La demande de selection
+    """    
+    afficher_menu(titre,liste_options)
+    repasknb = demander_nombre("Entrez votre choix [1-"+str(len(liste_options))+"] : ",len(liste_options))
+    return repasknb
 
 def programmepincipal():
-    f
+    liste_options=[
+        "",
+        "",
+        ""
+        ]
+    quitter = False
+    while not quitter:
+        rep = menu("GESTIONNAIRE DE COURSES")
