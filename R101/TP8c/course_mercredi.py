@@ -113,10 +113,21 @@ def menu(titre, liste_options):
 
 def programmepincipal():
     liste_options=[
-        "",
-        "",
-        ""
+        "créer liste de course"
+        "ajt article",
+        "sup article",
+        "changeprix article",
+        "total prix",
+        "name article max prix"
         ]
     quitter = False
+    listedecourse = {}
     while not quitter:
         rep = menu("GESTIONNAIRE DE COURSES")
+        if rep == None:
+            print("L'option n'existe pas")
+        elif rep == 1:
+            listedecourse = creerlistecourse()
+        elif rep == len(liste_options):
+            quitter = True
+    input("Cliquer sur entré pour confirmer")
