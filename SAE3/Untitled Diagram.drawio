@@ -359,6 +359,12 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="HpANqpM9vHDslw9GVgWa-15" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-116" y="413" width="119" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="HpANqpM9vHDslw9GVgWa-16" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-144" y="451" width="241" height="114" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
