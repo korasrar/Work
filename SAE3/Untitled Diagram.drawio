@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.8.4">
   <diagram name="Page-1" id="wM4RoKq5729jwZ3iucGG">
-    <mxGraphModel dx="3674" dy="1596" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3674" dy="1196" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -116,7 +116,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="4eetMDyRZdfKtizNTRC6-35" value="Appartenir" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-617" y="-423" width="156" height="54" as="geometry" />
+          <mxGeometry x="34" y="-42" width="156" height="54" as="geometry" />
         </mxCell>
         <mxCell id="4eetMDyRZdfKtizNTRC6-41" value="" style="shape=link;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="H4MT1m2m2PA6DwM7eySg-1" target="ghfGUBnxXCv3T0vmz09p-28" edge="1">
           <mxGeometry width="100" relative="1" as="geometry">
