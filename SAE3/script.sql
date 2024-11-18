@@ -1,96 +1,96 @@
 CREATE TABLE Emplacement (
     PRIMARY KEY (Code_Emplacement),
-    Code_Emplacement VARCHAR2(8) NOT NULL,
-    IDreservbota     NUMBER() NOT NULL,
+    Code_Emplacement VARCHAR2(8),
+    IDreservbota     NUMBER(),
     UNIQUE (IDreservbota)
 );
 
 CREATE TABLE Especes (
     PRIMARY KEY (IDEspeces),
-    IDEspeces        VARCHAR(42) NOT NULL,
+    IDEspeces        VARCHAR2(42),
     Nom_Scientifique VARCHAR2(255),
     Nom_Vulgaire     VARCHAR2(255),
     Description      TEXT,
-    IDPlante         VARCHAR(42) NOT NULL,
-    Nom_Famille      VARCHAR2(255) NOT NULL
+    IDPlante         VARCHAR2(42),
+    Nom_Famille      VARCHAR2(255)
 );
 
 CREATE TABLE Famille_Especes (
     PRIMARY KEY (Nom_Famille),
-    Nom_Famille      VARCHAR2(255) NOT NULL,
+    Nom_Famille      VARCHAR2(255),
     Description      TEXT,
-    Caracteristiques VARCHAR(42)
+    Caracteristiques VARCHAR2(42)
 );
 
 CREATE TABLE Fiches_Arrosages (
     PRIMARY KEY (IDFiche),
-    IDFiche                        VARCHAR(42) NOT NULL,
-    Quantitte_Eau_Semaine          VARCHAR(42),
-    Mode_Arrosage                  VARCHAR(42),
-    Ajust_Saisons_Condi_CLimatique VARCHAR(42)
+    IDFiche                        VARCHAR2(42),
+    Quantitte_Eau_Semaine          VARCHAR2(42),
+    Mode_Arrosage                  VARCHAR2(42),
+    Ajust_Saisons_Condi_CLimatique VARCHAR2(42)
 );
 
 CREATE TABLE IS_A (
     PRIMARY KEY (Superficie, Nom_Orga, IDreservbota),
-    Superficie   NUMBNER(10) NOT NULL,
-    Nom_Orga     VARCHAR(255) NOT NULL,
-    IDreservbota NUMBER() NOT NULL
+    Superficie   NUMBNER(10),
+    Nom_Orga     VARCHAR2(255),
+    IDreservbota NUMBER()
 );
 
 CREATE TABLE Jardins (
     PRIMARY KEY (Nom_Orga),
-    Nom_Orga VARCHAR(255) NOT NULL,
-    Adresse  VARCHAR(30),
+    Nom_Orga VARCHAR2(255),
+    Adresse  VARCHAR2(30),
     Contact  NUMBER(10)
 );
 
 CREATE TABLE Nourri (
     PRIMARY KEY (IDEspeces, IDNutriments),
-    IDEspeces    VARCHAR(42) NOT NULL,
-    IDNutriments VARCHAR(42) NOT NULL
+    IDEspeces    VARCHAR2(42),
+    IDNutriments VARCHAR2(42)
 );
 
 CREATE TABLE Nutriment (
     PRIMARY KEY (IDNutriments),
-    IDNutriments      VARCHAR(42) NOT NULL,
+    IDNutriments      VARCHAR2(42),
     Nom_Nutriments    VARCHAR2(255),
-    Formule_Chimique  VARCHAR(42),
-    Type              VARCHAR(42),
-    Taux_Remplacement VARCHAR(42)
+    Formule_Chimique  VARCHAR2(42),
+    Type              VARCHAR2(42),
+    Taux_Remplacement VARCHAR2(42)
 );
 
 CREATE TABLE Plante (
     PRIMARY KEY (IDPlante),
-    IDPlante         VARCHAR(42) NOT NULL,
-    Dateplantation   VARCHAR(42),
+    IDPlante         VARCHAR2(42),
+    Dateplantation   VARCHAR2(42),
     Couleur          VARCHAR2(50),
     Hauteur          DECIMAL(10,2),
-    Emplacement      VARCHAR(42),
-    Code_Emplacement VARCHAR2(8) NOT NULL
+    Emplacement      VARCHAR2(42),
+    Code_Emplacement VARCHAR2(8)
 );
 
 CREATE TABLE Remplacer (
     PRIMARY KEY (IDNutriments_1, IDNutriments_2),
-    IDNutriments_1 VARCHAR(42) NOT NULL,
-    IDNutriments_2 VARCHAR(42) NOT NULL
+    IDNutriments_1 VARCHAR2(42),
+    IDNutriments_2 VARCHAR2(42)
 );
 
 CREATE TABLE Reserve_Botanique (
     PRIMARY KEY (IDreservbota),
-    IDreservbota NUMBER() NOT NULL,
+    IDreservbota NUMBER(),
     Nomreserv    VARCHAR2(42),
     Ville        VARCHAR2(100),
     Pays         VARCHAR2(100),
     Tel          VARCHAR2(20),
     Email        VARCHAR2(255),
     Nom_Rep      VARCHAR2(255),
-    Type_Reserv  VARCHAR(42)
+    Type_Reserv  VARCHAR2(42)
 );
 
 CREATE TABLE Zone_Geo_Origine (
     PRIMARY KEY (Zone_Geo),
-    Zone_Geo  VARCHAR(42) NOT NULL,
-    IDEspeces VARCHAR(42) NOT NULL
+    Zone_Geo  VARCHAR2(42),
+    IDEspeces VARCHAR2(42)
 );
 
 ALTER TABLE Emplacement ADD FOREIGN KEY (IDreservbota) REFERENCES Reserve_Botanique (IDreservbota);
