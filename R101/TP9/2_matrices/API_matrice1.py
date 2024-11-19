@@ -12,8 +12,10 @@ def matrice(nb_lignes, nb_colonnes, valeur_par_defaut):
     Returns:
         une nouvelle matrice qui contient la valeur par défaut dans chacune de ses cases
     """
-    ...
-
+    listeval = []
+    for i in range(nb_colonnes*nb_lignes):
+        listeval.append(valeur_par_defaut)
+    return (nb_lignes,nb_colonnes,listeval)
 
 
 def set_val(la_matrice, ligne, colonne, nouvelle_valeur):
@@ -29,7 +31,7 @@ def set_val(la_matrice, ligne, colonne, nouvelle_valeur):
     Returns:
         None
     """
-    ...
+    la_matrice[2][ligne*colonne] = nouvelle_valeur
 
 
 def get_nb_lignes(la_matrice):
@@ -41,7 +43,7 @@ def get_nb_lignes(la_matrice):
     Returns:
         int : le nombre de lignes de la matrice
     """
-    ...
+    return la_matrice[0]
 
 
 def get_nb_colonnes(la_matrice):
@@ -53,7 +55,7 @@ def get_nb_colonnes(la_matrice):
     Returns:
         int : le nombre de colonnes de la matrice
     """
-    ...
+    return la_matrice[1]
 
 
 def get_val(la_matrice, ligne, colonne):
@@ -68,7 +70,7 @@ def get_val(la_matrice, ligne, colonne):
     Returns:
         la valeur qui est dans la case située à la ligne et la colonne spécifiées
     """
-    ...
+    return la_matrice[2][ligne*colonne]
 
 # Fonctions pour l'affichage
 
@@ -119,7 +121,7 @@ def charge_matrice_str(nom_fichier):
     Returns:
         une matrice de str
     """
-    ...
+    
 
 
 def sauve_matrice(la_matrice, nom_fichier):
@@ -133,4 +135,4 @@ def sauve_matrice(la_matrice, nom_fichier):
     Returns:
         None
     """
-    ...
+    

@@ -70,9 +70,15 @@ def dico_par_famille(pokedex):
         dict: un dictionnaire dont les clés sont le nom de familles (str) et la valeur associée est
         l'ensemble (set) des noms des pokemons de cette famille dans le pokedex
     """
-    dicofrequence = frequences_famille(pokedex).keys()
-
-print(dico_par_famille([('Bulbizarre', 'Plante'), ('Aeromite', 'Poison'), ('Abo', 'Poison')]))
+    dicofrequence = frequences_famille(pokedex)
+    dicofamille = {}
+    for famille in dicofrequence.keys():
+        enstemp = set()
+        for pokemon in pokedex:
+            if pokemon[1] == famille:
+                enstemp.add(pokemon[0])
+        dicofamille[famille] = enstemp
+    return dicofamille
 
 def famille_la_plus_representee(pokedex):
     """détermine le nom de la famille la plus représentée dans le pokedex
@@ -93,11 +99,9 @@ def famille_la_plus_representee(pokedex):
             nbmax = frq
     return famille
 
-
 # ==========================
 # Petites bêtes (la suite)
 # ==========================
-
 
 def toutes_les_familles_v2(pokedex):
     """détermine l'ensemble des familles représentées dans le pokedex
