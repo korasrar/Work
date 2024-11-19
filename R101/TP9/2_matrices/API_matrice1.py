@@ -31,7 +31,7 @@ def set_val(la_matrice, ligne, colonne, nouvelle_valeur):
     Returns:
         None
     """
-    la_matrice[2][ligne*colonne] = nouvelle_valeur
+    la_matrice[2][get_nb_colonnes(la_matrice)*ligne+colonne] = nouvelle_valeur
 
 
 def get_nb_lignes(la_matrice):
@@ -70,7 +70,7 @@ def get_val(la_matrice, ligne, colonne):
     Returns:
         la valeur qui est dans la case située à la ligne et la colonne spécifiées
     """
-    return la_matrice[2][ligne*colonne]
+    return la_matrice[2][get_nb_colonnes[la_matrice]*ligne+colonne]
 
 # Fonctions pour l'affichage
 
