@@ -96,6 +96,15 @@ insert into client values(
     '123'
 );
 
+insert into client values(
+    13,
+    'Ikari',
+    'Shinji',
+    '38 rue de lapanyan',
+    'shinjiiari@nerv.com',
+    '124'
+);
+
 insert into article values(
     1,
     'Figurine EVA01',
@@ -111,3 +120,22 @@ insert into article values(
     20.00,
     20
 );
+
+insert into article values(
+    3,
+    'Figurine EVA03',
+    55,
+    20.00,
+    20
+);
+
+insert into commande values(
+    1,
+    24/12/2024,
+    12,
+)
+
+insert into contenir values(
+    1,
+    1,
+)
