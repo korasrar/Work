@@ -4,7 +4,7 @@
 -- purge recyclebin;
 
 create table ReserveBotanique (
-    primary key IDReserveBota number(10),
+    PRIMARY KEY IDReserveBota number(10),
     NomReserve varchar2(30),
     Ville varchar2(30),
     Pays varchar2(30),
@@ -26,6 +26,10 @@ create table Jardins (
     AdresseContact varchar2(50),
     InformationContact varchar2(80),
     constraint foreignkey_Jardins_IDReserveBota FOREIGN KEY (IDReserveBota) REFERENCES ReserveBotanique (IDReserveBota)
+);
+
+create table Emplacement (
+    PRIMARY KEY CodeEmplacement
 );
 
 create table FamilleEpece(
