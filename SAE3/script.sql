@@ -114,6 +114,6 @@ create table REMPLACER (
     IDNutrimentSubstitut number(10),
     TauxRemplacement number(4,2),
     PRIMARY KEY (IDNutrimentPrincipal, IDNutrimentSubstitut),
-    constraint foreignkey_REMPLACER_IDNutriment FOREIGN KEY (IDNutriment) REFERENCES Nutriment (IDNutriment),
-    constraint foreignkey_REMPLACER_IDNutriment FOREIGN KEY (IDNutriment) REFERENCES Nutriment (IDNutriment)
+    constraint foreignkey_REMPLACER_IDNutriment FOREIGN KEY (IDNutrimentPrincipal) REFERENCES Nutriment (IDNutriment),
+    constraint foreignkey_REMPLACER_IDNutriment FOREIGN KEY (IDNutrimentSubstitut) REFERENCES Nutriment (IDNutriment)
 );
