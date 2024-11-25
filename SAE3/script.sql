@@ -25,17 +25,18 @@ create table ReserveBotanique (
     Telephone number(20),
     Email varchar2(40),
     NomRepresentant varchar2(30),
-    TypeReserve varchar2(10) (TypeReserve IN ('Forets', 'Jardins'))
+    TypeReserve varchar2(10),
+    CHECK (TypeReserve IN ('Forets', 'Jardins'))
 );
 
 create table Forets (
-    IDReserveBota number(10),
+    IDReserveBota number(10) NOT NULL,
     Superficie number(20),
     constraint foreignkey_Forets_IDReserveBota FOREIGN KEY (IDReserveBota) REFERENCES ReserveBotanique (IDReserveBota)
 );
 
 create table Jardins (
-    IDReserveBota number(10),
+    IDReserveBota number(10) NOT NULL,
     NomOrganisation varchar2(30),
     AdresseContact varchar2(50),
     InformationContact varchar2(80),
@@ -44,7 +45,7 @@ create table Jardins (
 
 create table Emplacement (
     CodeEmplacement number(10) PRIMARY KEY,
-    IDReserveBota number(10),
+    IDReserveBota number(10) NOT NULL,
     SituationEmplacement varchar2(10),
     constraint foreignkey_Emplacement_IDReserveBota FOREIGN KEY (IDReserveBota) REFERENCES ReserveBotanique (IDReserveBota)
 );
@@ -66,9 +67,9 @@ create table Espece (
     IDEspece number(10) PRIMARY KEY,
     NomScientifique varchar2(30),
     NomVulgaire varchar2(30),
-    DescriptionEspeces varchar2(50)
-    NomFamille varchar2(20),
-    IDFicheArrosage number(10),
+    DescriptionEspeces varchar2(50),
+    NomFamille varchar2(20) NOT NULL,
+    IDFicheArrosage number(10) NOT NULL,
     constraint foreignkey_Espece_NomFamille FOREIGN KEY (NomFamille) REFERENCES FamilleEspece (NomFamille),
     constraint foreignkey_Espece_IDFicheArrosage FOREIGN KEY (IDFicheArrosage) REFERENCES FicheArrosage (IDFicheArrosage)
 );
@@ -77,18 +78,18 @@ create table Plante (
     IDPlante number(10) PRIMARY KEY,
     DatePlantation date,
     Couleur varchar2(10),
-    Hauteur number(5)
-    IDEspece number(10),
-    CodeEmplacement number(10),
+    Hauteur number(5),
+    IDEspece number(10) NOT NULL,
+    CodeEmplacement number(10) NOT NULL,
     constraint foreignkey_Plante_IDEspece FOREIGN KEY (IDEspece) REFERENCES Espece (IDEspece),
     constraint foreignkey_Plante_CodeEmplacement FOREIGN KEY (CodeEmplacement) REFERENCES Emplacement (CodeEmplacement)
 );
 
 create table Nutriment (
-    IDNutriment number(10) PRIMARY KEY;
+    IDNutriment number(10) PRIMARY KEY,
     NomNutriment varchar2(50),
     FormuleChimique varchar2(50),
-    TypeNutriment varchar2(50),
+    TypeNutriment varchar2(50)
 );
 
 create table STOCKER (
@@ -101,8 +102,8 @@ create table STOCKER (
 );
 
 create table NOURRIR (
-    IDEspece number(10),
-    IDNutriment number(10),
+    IDEspece number(10) NOT NULL,
+    IDNutriment number(10) NOT NULL,
     QteParJour number(10,5),
     PRIMARY KEY (IDEspece, IDNutriment),
     constraint foreignkey_NOURRIR_IDEspece FOREIGN KEY (IDEspece) REFERENCES Espece (IDEspece),
@@ -110,10 +111,11 @@ create table NOURRIR (
 );
 
 create table REMPLACER (
-    IDNutrimentPrincipal number(10),
-    IDNutrimentSubstitut number(10),
+    IDNutrimentPrincipal number(10) NOT NULL,
+    IDNutrimentSubstitut number(10) NOT NULL,
     TauxRemplacement number(4,2),
     PRIMARY KEY (IDNutrimentPrincipal, IDNutrimentSubstitut),
-    constraint foreignkey_REMPLACER_IDNutriment FOREIGN KEY (IDNutrimentPrincipal) REFERENCES Nutriment (IDNutriment),
-    constraint foreignkey_REMPLACER_IDNutriment FOREIGN KEY (IDNutrimentSubstitut) REFERENCES Nutriment (IDNutriment)
+    constraint foreignkey_REMPLACER_IDNutrimentPrincipal FOREIGN KEY (IDNutrimentPrincipal) REFERENCES Nutriment (IDNutriment),
+    constraint foreignkey_REMPLACER_IDNutrimentSubstitut FOREIGN KEY (IDNutrimentSubstitut) REFERENCES Nutriment (IDNutriment)
 );
+
