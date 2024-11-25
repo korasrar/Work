@@ -18,7 +18,7 @@ drop table ReserveBotanique;
 purge recyclebin;
 
 create table ReserveBotanique (
-    PRIMARY KEY IDReserveBota number(10),
+    IDReserveBota number(10) PRIMARY KEY,
     NomReserve varchar2(30),
     Ville varchar2(30),
     Pays varchar2(30),
@@ -43,27 +43,27 @@ create table Jardins (
 );
 
 create table Emplacement (
-    PRIMARY KEY CodeEmplacement number(10),
+    CodeEmplacement number(10) PRIMARY KEY,
     IDReserveBota number(10),
     SituationEmplacement varchar2(10),
     constraint foreignkey_Emplacement_IDReserveBota FOREIGN KEY (IDReserveBota) REFERENCES ReserveBotanique (IDReserveBota)
 );
 
 create table FamilleEspece(
-    PRIMARY KEY NomFamille varchar2(20),
+    NomFamille varchar2(20) PRIMARY KEY,
     DescriptionFamille varchar2(50),
-    Catatéristiques varchar2(20)
+    Catateristiques varchar2(20)
 );
 
 create table FicheArrosage (
-    PRIMARY KEY IDFicheArrosage number(10),
+    IDFicheArrosage number(10) PRIMARY KEY,
     QteEauSemaine number(10),
     ModeArrosage varchar2(20),
     AjustementsSaison varchar2(30)
 );
 
 create table Espece (
-    PRIMARY KEY IDEspece number(10),
+    IDEspece number(10) PRIMARY KEY,
     NomScientifique varchar2(30),
     NomVulgaire varchar2(30),
     DescriptionEspeces varchar2(50)
@@ -75,7 +75,7 @@ create table Espece (
 
 create table Plante (
     IDPlante number(10) PRIMARY KEY,
-    DatePlantation DATE,
+    DatePlantation date,
     Couleur varchar2(10),
     Hauteur number(5)
     IDEspece number(10),
@@ -85,7 +85,7 @@ create table Plante (
 );
 
 create table Nutriment (
-    PRIMARY KEY IDNutriment number(10);
+    IDNutriment number(10) PRIMARY KEY;
     NomNutriment varchar2(50),
     FormuleChimique varchar2(50),
     TypeNutriment varchar2(50),
