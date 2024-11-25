@@ -52,15 +52,15 @@ create table Emplacement (
 
 create table FamilleEspece(
     NomFamille varchar2(20) PRIMARY KEY,
-    DescriptionFamille varchar2(50),
-    Catateristiques varchar2(20)
+    DescriptionFamille varchar2(300),
+    Catateristiques varchar2(50)
 );
 
 create table FicheArrosage (
     IDFicheArrosage number(10) PRIMARY KEY,
     QteEauSemaine number(10),
     ModeArrosage varchar2(20),
-    AjustementsSaison varchar2(30)
+    AjustementsSaison varchar2(60)
 );
 
 create table Espece (
@@ -77,7 +77,7 @@ create table Espece (
 create table Plante (
     IDPlante number(10) PRIMARY KEY,
     DatePlantation date,
-    Couleur varchar2(10),
+    Couleur varchar2(20),
     Hauteur number(5),
     IDEspece number(10) NOT NULL,
     CodeEmplacement number(10) NOT NULL,
@@ -133,22 +133,21 @@ insert into Forets values (6, 75000);
 insert into Jardins values (2, 'NERV HQ', 'GeoFront Level 3', 'contact@nerv-hq.jp');
 insert into Jardins values (4, 'SEELE Organization', 'Hakone District', 'info@seele.org');
 -- Ne fonctionne pas car les identifiants (IDReserveBota) n'existe pas dans la table ReserveBotanique
-insert into Jardins values (7, 'Shinji Community', 'GeoFront South Wing', 'shinji@community.jp');
-insert into Jardins values (8, 'Tokyo-3 Residents', 'Sector A4', 'tokyo3@gardens.jp');
+insert into Jardins values (7, 'Shinji Community', 'GeoFront Aile Sud', 'shinji@community.jp');
+insert into Jardins values (8, 'Tokyo-3 Residents', 'Secteur A4', 'tokyo3@gardens.jp');
 
-insert into Emplacement values (101, 1, 'North Zone');
-insert into Emplacement values (102, 1, 'East Wing');
-insert into Emplacement values (103, 1, 'Main Greenhouse');
-insert into Emplacement values (101, 2, 'North Zone');
-insert into Emplacement values (102, 2, 'East Wing');
-insert into Emplacement values (103, 2, 'South Forest');
-insert into Emplacement values (101, 3, 'North Zone');
-insert into Emplacement values (102, 3, 'East Wing');
-insert into Emplacement values (103, 3, 'South Forest');
-insert into Emplacement values (101, 4, 'North Zone');
-insert into Emplacement values (102, 4, 'East Wing');
-insert into Emplacement values (103, 4, 'Main Greenhouse');
--- Je peut mettre les mêmes codes d'emplacement tant que l'IDReserveBota est différent
+insert into Emplacement values (101, 1, 'Fleurie');
+insert into Emplacement values (102, 1, 'Vide');
+insert into Emplacement values (103, 1, 'Pousse');
+insert into Emplacement values (104, 2, 'Fleurie');
+insert into Emplacement values (105, 2, 'Pousse');
+insert into Emplacement values (106, 2, 'Vide');
+insert into Emplacement values (107, 3, 'Pousse');
+insert into Emplacement values (108, 3, 'Vide');
+insert into Emplacement values (109, 3, 'Fleurie');
+insert into Emplacement values (110, 4, 'Pousse');
+insert into Emplacement values (111, 4, 'Fleurie');
+insert into Emplacement values (112, 4, 'Vide');
 
 insert into FamilleEspece values ('Asteracées', 'Chez les Astéracées, la “fleur” est en réalité composée d’un ensemble de petites fleurs réunies sur un réceptacle (le fond d’artichaut). L’ensemble est appelé un capitule.', 'Artichaut');
 insert into FamilleEspece values ('Brassicacées', 'Les Brassicacées ou Crucifères possèdent toujours des fleurs à quatre sépales et à quatre pétales, bien séparés et disposés en croix.', 'Croix');
@@ -163,7 +162,7 @@ insert into Espece values (2, 'Pinus sylvestris', 'Pin sylvestre', 'Aiguilles pe
 insert into Espece values (3, 'Pteridium aquilinum', 'Fougère aigle', 'Frondes délicates', 'Asteracées', 3);
 insert into Espece values (4, 'Sphagnum', 'Sphaigne', 'Retient lhumidité', 'Asteracées', 4); 
 -- L'insertion ne vas pas fonctionner car la famille n'est pas répertorier dans la table FamilleEspece
-insert into Espece values (1, 'Ficus elastica', 'Rubber Tree', 'Large green leaves', 'Angiosperms', 1);
+insert into Espece values (5, 'Alstroemeria', 'Lys du pérou', 'Torsion de la feuille', 'Angiosperms', 1);
 
 insert into Plante values (1001, TO_DATE('2024-04-01', 'YYYY-MM-DD'), 'Vert', 300, 1, 101);
 insert into Plante values (1002, TO_DATE('2024-05-15', 'YYYY-MM-DD'), 'Vert foncée', 400, 2, 102);
