@@ -18,7 +18,7 @@ drop table ReserveBotanique;
 purge recyclebin;
 
 create table ReserveBotanique (
-    IDReserveBota number(10) PRIMARY KEY,
+    PRIMARY KEY IDReserveBota number(10),
     NomReserve varchar2(30),
     Ville varchar2(30),
     Pays varchar2(30),
@@ -43,27 +43,27 @@ create table Jardins (
 );
 
 create table Emplacement (
-    CodeEmplacement number(10) PRIMARY KEY,
+    PRIMARY KEY CodeEmplacement number(10),
     IDReserveBota number(10),
     SituationEmplacement varchar2(10),
     constraint foreignkey_Emplacement_IDReserveBota FOREIGN KEY (IDReserveBota) REFERENCES ReserveBotanique (IDReserveBota)
 );
 
 create table FamilleEspece(
-    NomFamille varchar2(20) PRIMARY KEY,
+    PRIMARY KEY NomFamille varchar2(20),
     DescriptionFamille varchar2(50),
     Catatéristiques varchar2(20)
 );
 
 create table FicheArrosage (
-    IDFicheArrosage number(10) PRIMARY KEY,
+    PRIMARY KEY IDFicheArrosage number(10),
     QteEauSemaine number(10),
     ModeArrosage varchar2(20),
     AjustementsSaison varchar2(30)
 );
 
 create table Espece (
-    IDEspece number(10) PRIMARY KEY,
+    PRIMARY KEY IDEspece number(10),
     NomScientifique varchar2(30),
     NomVulgaire varchar2(30),
     DescriptionEspeces varchar2(50)
@@ -74,7 +74,7 @@ create table Espece (
 );
 
 create table Plante (
-    IDPlante number(10) PRIMARY KEY,
+    PRIMARY KEY IDPlante number(10),
     DatePlantation DATE,
     Couleur varchar2(10),
     Hauteur number(5)
@@ -85,7 +85,7 @@ create table Plante (
 );
 
 create table Nutriment (
-    IDNutriment number(10) PRIMARY KEY;
+    PRIMARY KEY IDNutriment number(10);
     NomNutriment varchar2(50),
     FormuleChimique varchar2(50),
     TypeNutriment varchar2(50),
@@ -104,7 +104,7 @@ create table NOURRIR (
     IDEspece number(10),
     IDNutriment number(10),
     QteParJour number(10,5),
-    PRIMARY KEY (IDEspece, IDReserveBota),
+    PRIMARY KEY (IDEspece, IDNutriment),
     constraint foreignkey_NOURRIR_IDEspece FOREIGN KEY (IDEspece) REFERENCES Espece (IDEspece),
     constraint foreignkey_NOURRIR_IDNutriment FOREIGN KEY (IDNutriment) REFERENCES Nutriment (IDNutriment)
 );
