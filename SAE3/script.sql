@@ -75,7 +75,7 @@ create table Espece (
 
 create table Plante (
     IDPlante number(10) PRIMARY KEY,
-    DatePlantation DATE,
+    DatePlantation date,
     Couleur varchar2(10),
     Hauteur number(5)
     IDEspece number(10),
