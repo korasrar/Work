@@ -70,7 +70,7 @@ def get_val(la_matrice, ligne, colonne):
     Returns:
         la valeur qui est dans la case située à la ligne et la colonne spécifiées
     """
-    return la_matrice[2][get_nb_colonnes[la_matrice]*ligne+colonne]
+    return la_matrice[2][get_nb_colonnes(la_matrice)*ligne+colonne]
 
 # Fonctions pour l'affichage
 
@@ -107,7 +107,7 @@ def affiche(la_matrice, taille_cellule=4):
             print(str(get_val(la_matrice, i, j)).rjust(taille_cellule) + '|', end='')
         affiche_ligne_separatrice(la_matrice, taille_cellule)
     print()
-
+affiche(matrice(5,5,0))
 
 # Ajouter ici les fonctions supplémentaires, sans oublier de compléter le fichier
 # tests_API_matrice.py avec des fonctions de tests
@@ -121,8 +121,15 @@ def charge_matrice_str(nom_fichier):
     Returns:
         une matrice de str
     """
-    
-
+    listval = []
+    with open(nom_fichier, 'r') as fic:
+        for ligne in fic:
+            val = ligne.split(",")
+            val.pop()
+            listval.append(val)
+        la_matrice = (len(listval),len(val),listval)
+    return la_matrice
+print(charge_matrice_str("R101/TP9/2_matrices/matrice.csv"))
 
 def sauve_matrice(la_matrice, nom_fichier):
     """permet sauvegarder une matrice dans un fichier CSV.
@@ -135,4 +142,5 @@ def sauve_matrice(la_matrice, nom_fichier):
     Returns:
         None
     """
-    
+    with open(nom_fichier, 'w') as fic:
+        
