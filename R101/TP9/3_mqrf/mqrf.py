@@ -35,7 +35,7 @@ def quel_guichet_v2(mqrf, guichet):
         tuple: le nom du guichet qui finit par donner le formulaire A-38 et le nombre de
         guichets visités pour y parvenir
     """
-    nbguichet = 0
+    nbguichet = 1
     guichet_actuel = guichet
     while mqrf[guichet_actuel] is not None:
         print("Je vais au guichet "+mqrf[guichet_actuel])
