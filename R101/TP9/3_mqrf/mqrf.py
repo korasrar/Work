@@ -43,7 +43,6 @@ def quel_guichet_v2(mqrf, guichet):
         nbguichet += 1
     print("C'est bon mon goat, le formulaire A_38 est guichet :")
     return (guichet_actuel,nbguichet)
-print(quel_guichet_v2(mqrf1,"Jeancloddus"))
 
 def quel_guichet_v3(mqrf, guichet):
     """Détermine le nom du guichet qui délivre le formulaire A-38
@@ -59,5 +58,17 @@ def quel_guichet_v3(mqrf, guichet):
         S'il n'est pas possible d'obtenir le formulaire en partant du guichet de depart,
         cette fonction renvoie None
     """
-    
+    ind = 0
+    nbguichet = 1
+    guichet_actuel = guichet
+    while not mqrf[guichet_actuel] is None and ind < len(mqrf):
+        nbguichet += 1
+        ind += 1
+        print("Je vais au guichet "+ mqrf[guichet_actuel])
+        guichet_actuel = mqrf[guichet_actuel]
+    if ind >= len(mqrf) : 
+        return None
+    print("C'est bon mon goat, le formulaire A_38 est guichet :")
+    return (guichet_actuel,nbguichet)
+print(quel_guichet_v3(mqrf1,"Plexus"))
 
