@@ -41,27 +41,23 @@ def test_famille_la_plus_representee():
 # ==================================
 
 def test_toutes_les_familles_v2():
-    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},
-                   "Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
+    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},"Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
     assert petites_betes.toutes_les_familles_v2(mon_pokedex) == {'Plante', 'Insecte', 'Poison'}
 
 def test_nombre_pokemons_v2():
-    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},
-                   "Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
+    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},"Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
     assert petites_betes.nombre_pokemons_v2(mon_pokedex, 'Plante') == 1
     assert petites_betes.nombre_pokemons_v2(mon_pokedex, 'Poison') == 3
     assert petites_betes.nombre_pokemons_v2(mon_pokedex, 'Fée') == 0
 
 
 def test_frequences_famille_v2():
-    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},
-                   "Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
+    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"}, "Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
     assert petites_betes.frequences_famille_v2(mon_pokedex) == {'Plante': 1, 'Poison': 3, 'Insecte':1}
 
 
 def test_dico_par_famille_v2():
-    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},
-                   "Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
+    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},"Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
     assert petites_betes.dico_par_famille_v2(mon_pokedex) == {
         'Plante': {'Bulbizarre'},
         'Poison': {'Aeromite', 'Abo', 'Bulbizarre'},
@@ -69,6 +65,5 @@ def test_dico_par_famille_v2():
 
 
 def test_famille_la_plus_representee_v2():
-    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},
-                   "Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
+    mon_pokedex = {"Bulbizarre":{"Plante", "Poison"},"Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}
     assert petites_betes.famille_la_plus_representee_v2(mon_pokedex) == 'Poison'

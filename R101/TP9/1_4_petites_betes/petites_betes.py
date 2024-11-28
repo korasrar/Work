@@ -113,7 +113,11 @@ def toutes_les_familles_v2(pokedex):
     Returns:
         set: l'ensemble des familles représentées dans le pokedex
     """
-    ...
+    famille = set()
+    for fam in pokedex.values:
+        if fam not in famille:
+            famille.add(famille)
+    return famille
 
 def nombre_pokemons_v2(pokedex, famille):
     """calcule le nombre de pokemons d'une certaine famille dans un pokedex
