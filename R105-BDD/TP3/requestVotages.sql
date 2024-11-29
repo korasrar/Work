@@ -23,7 +23,7 @@ insert into Voyages values('V700', 'Paris', 'Tokyo',  to_date('01-05-2025-10:30'
 -- Q7
 select VilleDepart,VilleArrivee,to_char(Depart,'DD-MM-YYYY-HH24:MI') as Depart
 from Voyages
-where Depart>to_date('29-1-2025-00:00','DD-MM-YYYY-HH24:MI');
+where months_between(SYSDATE,Depart)>3;
 -- Q8
 -- Q9
 select *
