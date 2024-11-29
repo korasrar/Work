@@ -66,9 +66,7 @@ select Nom,Prenom
 from Clients natural join Reservations natural join Voyages
 where VilleArrivee='Rio de Janeiro';
 -- Q16
-select Ville
-from Clients
-intersect
-select Ville
-from Clients;
--- Q17 
+select C1.Nom,C2.Nom,C1.Ville
+from Clients C1,CLients C2
+where C1.Ville=C2.Ville and C1.ID<C2.ID;
+-- Q17
