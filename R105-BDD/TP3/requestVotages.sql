@@ -56,5 +56,19 @@ where VilleArrivee='Amsterdam'
 intersect
 select Nom,Prenom
 from Clients natural join Reservations natural join Voyages
-where VilleArrivee='Rio De Janeiro';
+where VilleArrivee='Rio de Janeiro';
 -- Q15
+select Nom,Prenom
+from Clients natural join Reservations natural join Voyages
+where VilleArrivee='Amsterdam'
+union
+select Nom,Prenom
+from Clients natural join Reservations natural join Voyages
+where VilleArrivee='Rio de Janeiro';
+-- Q16
+select Ville
+from Clients
+intersect
+select Ville
+from Clients;
+-- Q17 
