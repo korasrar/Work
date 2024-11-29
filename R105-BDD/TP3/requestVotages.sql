@@ -35,5 +35,26 @@ from Clients natural join Reservations natural join Voyages
 where VilleDepart='Paris' and Ville != 'Paris';
 -- Q11
 select Nom,Prenom
-from Clients natural join Reservations
-where ;
+from Clients 
+where ID not in (select ID from Reservations);
+-- Q12
+select Code
+from Voyages
+where code not in (select code from Reservations);
+-- Q13
+select Nom,Prenom
+from Clients natural join RESERVATIONS natural join Voyages
+where VilleDepart='Paris' and VilleArrivee='Amsterdam'
+minus
+select Nom,Prenom
+from Clients natural join Reservations natural join Voyages
+where VilleDepart='Paris' and VilleArrivee!='Amsterdam';
+-- Q14
+select Nom,Prenom
+from Clients natural join Reservations natural join Voyages
+where VilleArrivee='Amsterdam'
+intersect
+select Nom,Prenom
+from Clients natural join Reservations natural join Voyages
+where VilleArrivee='Rio De Janeiro';
+-- Q15
