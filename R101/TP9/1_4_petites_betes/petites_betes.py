@@ -115,9 +115,11 @@ def toutes_les_familles_v2(pokedex):
     """
     famille = set()
     for fam in pokedex.values:
-        if fam not in famille:
-            famille.add(famille)
+        for famin in fam:
+            if famin not in famille:
+                famille.add(famille)
     return famille
+print(toutes_les_familles_v2({"Bulbizarre":{"Plante", "Poison"},"Aeromite":{"Poison", "Insecte"}, "Abo":{"Poison"}}))
 
 def nombre_pokemons_v2(pokedex, famille):
     """calcule le nombre de pokemons d'une certaine famille dans un pokedex

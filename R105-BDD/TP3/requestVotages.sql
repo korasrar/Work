@@ -1,0 +1,26 @@
+-- Q1
+select VilleArrivee
+from VOYAGES
+where VilleDepart='Paris';
+-- Q2
+select *
+from VOYAGES
+where VilleArrivee='Amsterdam';
+-- Q3
+select VilleDepart,to_char(Depart,'DD-MM-YYYY-HH24:MI') as Depart
+from VOYAGES 
+where VilleArrivee='Amsterdam';
+-- Q4
+select Nom,Code,Prix
+from Clients natural join RESERVATIONS natural join VOYAGES;
+-- Q5
+select Nom,VilleDepart,Code
+from Clients natural join Reservations natural join Voyages
+where Ville=VilleDepart;
+-- Q6
+insert into Voyages values('V700', 'Paris', 'Tokyo',  to_date('01-05-2025-10:30','DD-MM-YYYY-HH24:MI'), to_date('07-05-2025-20:30','DD-MM-YYYY-HH24:MI'),600.00);
+-- Q7
+select VilleDepart,VilleArrivee,to_char(Depart,'DD-MM-YYYY-HH24:MI') as Depart
+from Voyages
+where Depart>
+-- Q8
