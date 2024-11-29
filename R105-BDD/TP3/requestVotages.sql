@@ -11,8 +11,9 @@ select VilleDepart,to_char(Depart,'DD-MM-YYYY-HH24:MI') as Depart
 from VOYAGES 
 where VilleArrivee='Amsterdam';
 -- Q4
-select Nom,Code,Prix
-from Clients natural join RESERVATIONS natural join VOYAGES;
+select Nom,VilleArrivee,Prix
+from Clients natural join RESERVATIONS natural join VOYAGES
+order by Nom,Prix;
 -- Q5
 select Nom,VilleDepart,Code
 from Clients natural join Reservations natural join Voyages
@@ -22,5 +23,17 @@ insert into Voyages values('V700', 'Paris', 'Tokyo',  to_date('01-05-2025-10:30'
 -- Q7
 select VilleDepart,VilleArrivee,to_char(Depart,'DD-MM-YYYY-HH24:MI') as Depart
 from Voyages
-where Depart>
+where Depart>to_date('29-1-2025-00:00','DD-MM-YYYY-HH24:MI');
 -- Q8
+-- Q9
+select *
+from Clients
+where Ville!='Paris';
+-- Q10
+select Nom,Prenom,Ville,VilleDepart
+from Clients natural join Reservations natural join Voyages
+where VilleDepart='Paris' and Ville != 'Paris';
+-- Q11
+select Nom,Prenom
+from Clients natural join Reservations
+where ;
