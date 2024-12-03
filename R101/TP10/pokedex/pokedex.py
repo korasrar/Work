@@ -10,16 +10,21 @@
 
 def appartient_v1(pokemon, pokedex): 
     """ renvoie True si pokemon (str) est présent dans le pokedex """
-    
-
+    for poke in pokedex:
+        if poke[0] == pokemon:
+            return True
+    return False
 
 def toutes_les_attaques_v1(pokemon, pokedex): 
     """
     param: un pokedex et le nom d'un pokemon (str) qui appartient au pokedex
     resultat: renvoie l'ensemble des types d'attaque du pokemon passé en paramètre
     """
-    ...
-
+    typeattaque = set()
+    for poke in pokedex:
+        if poke[0] == pokemon:
+            typeattaque.add(poke[1])
+    return typeattaque
 
 def nombre_de_v1(attaque, pokedex): 
     """
@@ -27,14 +32,30 @@ def nombre_de_v1(attaque, pokedex):
     resultat: renvoie le nombre de pokemons de ce type d'attaque
     dans le pokedex
     """
-    ...
+    res = 0
+    for typeattaque in pokedex:
+        if typeattaque[1] == attaque:
+            res += 1
+    return res
 
 
 def attaque_preferee_v1(pokedex):
     """
     Renvoie le nom du type d'attaque qui est la plus fréquente dans le pokedex
     """
-    ...
+    frequence = {}
+    for poke in pokedex:
+        if poke[1] in frequence:
+            frequence[poke[1]] += 1
+        else:
+            frequence[poke[1]] = 1
+    typemax = ""
+    resmax = 0
+    for typeattaque,val in frequence.items():
+        if resmax < val:
+            typemax = typeattaque
+            resmax = val
+    return typemax
 
 
 # =====================================================================
@@ -45,7 +66,7 @@ def attaque_preferee_v1(pokedex):
 
 def appartient_v2(pokemon, pokedex):
     """ renvoie True si pokemon (str) est présent dans le pokedex """
-    ...
+    
 
 
 def toutes_les_attaques_v2(pokemon, pokedex):
