@@ -91,12 +91,24 @@ def nombre_de_v2(attaque, pokedex):
             res += 1
     return res
 
-
 def attaque_preferee_v2(pokedex):
     """
     Renvoie le nom du type d'attaque qui est la plus fréquente dans le pokedex
     """
-    
+    dico = {}
+    for typeattaque in pokedex.values():
+        for attaque in typeattaque:
+            if attaque in dico:
+                dico[attaque] += 1
+            else:
+                dico[attaque] = 1
+    typemax = ""
+    resmax = 0
+    for typeattaque,val in dico.items():
+        if resmax < val:
+            typemax = typeattaque
+            resmax = val
+    return typemax
 
 # =====================================================================
 # Modélisation n°3
