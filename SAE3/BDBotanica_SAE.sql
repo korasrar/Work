@@ -1,8 +1,3 @@
--- rlwrap sqlplus maubert@ora12
--- drop table nomTable;
--- select * from tab;
--- purge recyclebin;
-
 drop table REMPLACER;
 drop table NOURRIR;
 drop table STOCKER;
