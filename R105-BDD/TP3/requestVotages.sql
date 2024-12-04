@@ -67,6 +67,23 @@ from Clients natural join Reservations natural join Voyages
 where VilleArrivee='Rio de Janeiro';
 -- Q16
 select C1.Nom,C2.Nom,C1.Ville
-from Clients C1,CLients C2
+from Clients C1,Clients C2
 where C1.Ville=C2.Ville and C1.ID<C2.ID;
 -- Q17
+select V1.Code,V2.Code,V1.Prix
+from Voyages V1,Voyages V2
+where V1.Prix=V2.Prix and V1.Code<V2.Code;
+-- Q18
+select R1.ID,R1.Code,R2.Code
+from Reservations R1,Reservations R2, Clients C1
+where R1.ID=C1.ID and R2.ID=C1.ID and R1.Code!=R2.Code and R1.Code<R2.Code;
+-- Q19 
+select Nom,Prenom
+from Clients 
+where ID in (select ID from Reservations)
+minus
+select C1.Nom,C1.Prenom
+from Reservations R1,Reservations R2, Clients C1
+where R1.ID=C1.ID and R2.ID=C1.ID and R1.Code!=R2.Code and R1.Code<R2.Code;
+-- Q20
+
