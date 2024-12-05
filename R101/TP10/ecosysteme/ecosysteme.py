@@ -8,7 +8,9 @@ def extinction_immediate(ecosysteme, animal):
     renvoie True si animal s'éteint immédiatement dans l'écosystème faute
     de nourriture
     """
-    ...
+    if ecosysteme[animal] in ecosysteme:
+        return False
+    return True
 
 
 def en_voie_disparition(ecosysteme, animal):
