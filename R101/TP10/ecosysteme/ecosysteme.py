@@ -19,7 +19,6 @@ def en_voie_disparition(ecosysteme, animal):
     """
     ...
 
-
 def animaux_en_danger(ecosysteme):
     """ renvoie l'ensemble des animaux qui sont en danger d'extinction immédiate"""
     ...
