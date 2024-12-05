@@ -119,7 +119,10 @@ def attaque_preferee_v2(pokedex):
 
 def appartient_v3(pokemon, pokedex):
     """ renvoie True si pokemon (str) est présent dans le pokedex """
-    ...
+    for allpokemon in pokedex.values():
+        if pokemon in allpokemon:
+            return True
+    return False
 
 
 def toutes_les_attaques_v3(pokemon, pokedex):
@@ -127,7 +130,11 @@ def toutes_les_attaques_v3(pokemon, pokedex):
     param: un pokedex et le nom d'un pokemon (str) qui appartient au pokedex
     resultat: renvoie l'ensemble des types d'attaque du pokemon passé en paramètre
     """
-    ...
+    typeattaque = set()
+    for attaque,allpokemon in pokedex.items():
+        if pokemon in allpokemon:
+            typeattaque.add(attaque)
+    return typeattaque
 
 
 def nombre_de_v3(attaque, pokedex):
@@ -136,14 +143,23 @@ def nombre_de_v3(attaque, pokedex):
     resultat: renvoie le nombre de pokemons de ce type d'attaque
     dans le pokedex
     """
-    ...
+    if attaque in pokedex :
+        return len(pokedex[attaque])
+    return 0
 
 
 def attaque_preferee_v3(pokedex):
     """
     Renvoie le nom du type d'attaque qui est la plus fréquente dans le pokedex
     """
-    ...
+    attaquemax = ""
+    pokemonmax = 0
+    for attaque,pokemon in pokedex.items():
+        if len(pokemon) > pokemonmax:
+            pokemonmax = len(pokemon)
+            attaquemax = attaque
+    return attaquemax
+    #return max(list(len(pokedex.keys())))
 
 # =====================================================================
 # Transformations
@@ -156,15 +172,18 @@ def v1_to_v2(pokedex_v1):
     param: prend en paramètre un pokedex version 1
     renvoie le même pokedex mais en version 2
     """
-    ...
+    pokedexv2  = {}
+    for pokemon,typeattaque in pokedex_v1:
+        if pokemon not in pokedexv2:
+            pokedexv2[pokemon] = set()
+        pokedexv2[pokemon].add(typeattaque)
+    return pokedexv2
 
-
-# Version 1 ==> Version 2
+# Version 2 ==> Version 3
 
 def v2_to_v3(pokedex_v2):
     """
     param: prend en paramètre un pokedex version2
     renvoie le même pokedex mais en version3
     """
-    ...
 
