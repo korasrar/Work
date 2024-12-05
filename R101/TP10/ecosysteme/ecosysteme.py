@@ -20,15 +20,14 @@ def en_voie_disparition(ecosysteme, animal):
     ...
 
 def animaux_en_danger(ecosysteme):
-    """ renvoie l'ensemble des animaux qui sont en danger d'extinction immédiate"""
-    ...
-
-
-def especes_en_voie_disparition(ecosysteme):
-    """ renvoie l'ensemble des animaux qui sont en voués à disparaitre à long terme
+    """
+    renvoie l'ensemble des animaux qui sont en danger d'extinction immédiate
     """
     ...
 
 
-
-
+def especes_en_voie_disparition(ecosysteme):
+    """
+    renvoie l'ensemble des animaux qui sont en voués à disparaitre à long terme
+    """
+    ...
