@@ -15,7 +15,14 @@ def pokemon_par_famille(liste_pokemon):
     Returns:
         dict: le dictionnaire nom_famille ensemble des noms de pokemon de cette famille
     """
-    ...
+    nom_famille = {}
+    for pokemon in liste_pokemon:
+        for famille in pokemon[1]:
+            if famille not in nom_famille:
+                nom_famille[famille] = set()
+        nom_famille[famille].add(pokemon)
+    return nom_famille
+print(pokemon_par_famille(ma_liste_pokemon))
 
 def test_pokemon_par_famille():
     ...
