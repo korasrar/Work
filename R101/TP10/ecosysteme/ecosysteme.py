@@ -12,7 +12,7 @@ def extinction_immediate(ecosysteme, animal):
     renvoie True si animal s'éteint immédiatement dans l'écosystème faute
     de nourriture
     """
-    if ecosysteme[animal] in ecosysteme:
+    if ecosysteme[animal] in ecosysteme or ecosysteme[animal] is None:
         return False
     return True
 
@@ -35,11 +35,19 @@ def animaux_en_danger(ecosysteme):
     """
     renvoie l'ensemble des animaux qui sont en danger d'extinction immédiate
     """
-    ...
-
+    animaux_disparition = set()
+    for animal in ecosysteme:
+        if extinction_immediate(ecosysteme,animal) == True:
+            animaux_disparition.add(animal)
+    return animaux_disparition
+print(animaux_en_danger(ecosysteme_1))
 
 def especes_en_voie_disparition(ecosysteme):
     """
     renvoie l'ensemble des animaux qui sont en voués à disparaitre à long terme
     """
-    ...
+    animaux_disparition = set()
+    for animal in ecosysteme:
+        if en_voie_disparition(ecosysteme,animal) == True:
+            animaux_disparition.add(animal)
+    return animaux_disparition
