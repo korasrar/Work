@@ -38,3 +38,5 @@ print(soupirants(ATM,'Cesar'))
 
 # EX3 ---------------------------------
 
+def sous_matrice(matrice,nb_lignes,nb_colonnes,position_haut,position_gauche):
+    
