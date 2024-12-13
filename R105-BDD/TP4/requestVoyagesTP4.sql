@@ -7,3 +7,6 @@ select Code,VilleDepart,VilleArrivee,Depart,Retour,Prix
 from Voyages
 where Code not in (select Code from Reservations);
 -- Q3 
+select Nom
+from Clients
+where 
