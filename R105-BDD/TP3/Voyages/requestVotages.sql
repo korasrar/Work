@@ -87,3 +87,4 @@ from Reservations R1,Reservations R2, Clients C1
 where R1.ID=C1.ID and R2.ID=C1.ID and R1.Code!=R2.Code and R1.Code<R2.Code;
 -- Q20
 
+

@@ -1,7 +1,8 @@
 -- Q1
 select nomP,dateN,ecole
 from PEINTRES 
-where nomP not in (select nomP from TABLEAUX);
+where nomP not in (select nomP 
+                    from TABLEAUX);
 -- Q2
 select nomP,titreTab,valeurEstimee,type
 from TABLEAUX
@@ -42,6 +43,19 @@ select ville
 from Galeries natural join EXPOSITIONTABLEAUX
 where nomP='Picasso';
 -- Q8
-
+select IdSalle,nomSalle,superfice,ville
+from Galeries
+minus
+select IdSalle,nomSalle,superfice,ville
+from Galeries natural join EXPOSITIONTABLEAUX;
 -- Q9
+select G1.ville
+from Galeries G1, Galeries G2
+where G1.ville=G2.ville and G1.IdSalle<G2.IdSalle;
 -- Q10
+select ville
+from Galeries
+minus 
+select G1.ville
+from Galeries G1, Galeries G2
+where G1.ville=G2.ville and G1.IdSalle<G2.IdSalle;
