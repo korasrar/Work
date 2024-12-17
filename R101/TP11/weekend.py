@@ -54,7 +54,6 @@ def matrice1():
     return mat1
 
 matrice_1 = matrice1()
-print(matrice_1)
 
 def sous_matrice(matrice,nb_lignes,nb_colonnes,position_haut,position_gauche):
     sousmatrice = mat.creer_matrice(nb_lignes,nb_colonnes)
@@ -62,6 +61,6 @@ def sous_matrice(matrice,nb_lignes,nb_colonnes,position_haut,position_gauche):
         for j in range(nb_lignes):
             mat.set_valeur(sousmatrice,j,i,matrice[position_gauche+j][position_haut+i])
     return sousmatrice
-print(sous_matrice(matrice_1,2,2,1,0))
 
-
+def colle_sous_matrice(M,sm,l,c):
+    
