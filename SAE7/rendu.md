@@ -33,11 +33,15 @@ Les couleurs de la palette sont codées en 2^n, n est le nombre de bit par pixel
 #### 5. Quel est le nombre de couleurs dans la palette?
 Les couleurs de la palette sont codées avec 02, en décimal cela donne 2 donc ma palette est constitué de 2 couleurs (adresse : 0x2E) 00 00 FF 00 | FF FF FF 00
 #### 6. Le codage des pixels a-t-il changé?
-Oui
+Oui, les couleurs sont au debut avec don la couleur rouge et blanche sur 4 octets chacun, et enfin les lignes de pixel qui sont codées sur 4 octets par lignes
 #### 7. Changez la couleur rouge des pixels en bleu pour obtenir l'image ci-dessous que vous nommerez ImageBleue.bmp.
-FF 00 00 00 | FF FF FF 00
+FF 00 00 00 | FF FF FF 00 (ImageBleue.bmp)
 #### 8. Inversez le damier : les blancs à la place des bleus et les bleus à la place des blancs, pour obtenir l'image ci-dessous.
+Pour inverser le damier je vais échanger les lignes qui décrive le dammier pour obtenir le damier inverser (ImageBleueInverse.bmp)
 #### 9. Modifiez le fichier  en mode index de couleurs avec okteta de façon à obtenir ceci. Enregistrez cette image sous ce nom Image3.bmp:
+après avoir fait la conversion en binaire des valeurs hexadecimal on peut observer que le schéma des pixels est représenter, quand le bit est a 0 la couleur est rouge et 1 la couleur est blanche comme défini dans les valeurs de la palette de couleurs ->
+F0 00 00 00 | 00 00 00 00 | 00 00 00 00 | A0 00 00 00
+Avec ca on a donc l'image3
 #### 10. Passez le fichier de l'ancien logo du Département d'Informatique en mode index de couleurs:
 #### 11. A quelle adresse peut-on trouver le nombre de couleurs qu'il y a dans la palette?
 #### 12. A quelle adresse dans la palette peut-on trouver la couleur à dominante "Blanc" utilisée par cette image?
