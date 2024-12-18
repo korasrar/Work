@@ -44,8 +44,25 @@ F0 00 00 00 | 00 00 00 00 | 00 00 00 00 | A0 00 00 00
 Avec ca on a donc l'image3
 #### 10. Passez le fichier de l'ancien logo du Département d'Informatique en mode index de couleurs:
 #### 11. A quelle adresse peut-on trouver le nombre de couleurs qu'il y a dans la palette?
+a l'adresse Ox2E qui est égale a (1O)¹⁶ = (16)¹⁰ comme définis dans la commande pour convert
 #### 12. A quelle adresse dans la palette peut-on trouver la couleur à dominante "Blanc" utilisée par cette image?
+On peut trouve le blanc a l'adresse 0x66 sous la forme -> FE FE FD 00
 #### 13. Où commence le tableau de pixel?
+On peut trouver l'adresse de où commence le tableu a l'adresse 0x0A qui est donc 0x76
 #### 14. En modifiant l'Hex,  placez quelques pixels bleus tout en bas de l'image.
+J'ai chercher une teinte de bleu dans la palette et ensuite modifier les premier caractère en hexa du tableau pour la donner la valeur 6 car ma teinte de bleu se trouve a la 6ème position dans la palette
 #### 15. Que se passe-t-il si l'on diminue le nombre de couleurs dans la palette? Que se passe t-il d'un point de vue visuel? Et dans l'hexa?
+D'un point de vu visuel l'image n'a plus que 4 couleur : blanc,gris et 2 teintes de bleu et dans l'hexa on observe que la palette a mis de la place pour une palette de 16 couleurs mais que seulement 4 sont utilisées et que les pixels sont définis par 0,1,2 ou 3.
 ### A.5 Utilisation des négatifs -
+#### 2. Changez dans l'entête du fichier la valeur de la hauteur de l'image. Elle est à l'origine de valeur 4 pixels, changez pour la valeur négative de  -4 pixels. Que ce passe-t-il?
+Pour inverser la valeur 4 en -4 il faut inversesr tout les bits dans la représentation de la valeur de hauteur dans l'en tête : 04 00 00 00
+-> FC FF FF FF
+#### 3. Profitez de cette information pour obtenir facilement à partir de ImageExempleIndexBMP3_16.bmp
+A9 01 00 00 -> 56 FE FF FF
+### A.6 Un fichier BMP avec compression
+#### 1. Quel est le poids du fichier? Pourquoi? Que c'est-il passé?
+60 04 00 00 -> (00 00 04 60)¹⁶ = (1120)¹⁰ octets
+Le poid du fichier a augmenter 102 -> 1120 octets
+#### 2. Trouvez dans l'entête l'offset que donne l'adresse de début des pixels.
+
+#### 3. Décodez le code des pixels. (C'est-a-dire essayez de retrouver dans l'hexadécimal  le codage des pixels et expliquez-le)
