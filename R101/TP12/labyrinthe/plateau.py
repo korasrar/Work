@@ -4,7 +4,7 @@ Permet de modéliser un le_plateau de jeu avec :
     - chaque nombre entier correspond à un item :
       MUR, COULOIR, PERSONNAGE, FANTOME
 """
-import matrice
+import matrice as mat
 
 MUR = 1
 COULOIR = 0
@@ -29,8 +29,10 @@ def init(nom_fichier="./labyrinthe1.txt"):
     Returns:
         le plateau de jeu avec les MUR, COULOIR, PERSONNAGE et FANTOME
     """
-    ...
-
+    plateau = mat.charge_matrice(nom_fichier)
+    mat.set_val(plateau,0,0,2)
+    mat.set_val(plateau,mat.get_nb_lignes(plateau)-1,mat.get_nb_colonnes(plateau)-1,3)
+    return plateau
 
 def est_sur_le_plateau(le_plateau, position):
     """Indique si la position est bien sur le plateau
@@ -42,7 +44,9 @@ def est_sur_le_plateau(le_plateau, position):
     Returns:
         [boolean]: True si la position est bien sur le plateau
     """
-    ...
+    if position[0] < 0 or position[1] < 0 or mat.get_nb_colonnes(le_plateau)-1 < position[1] or mat.get_nb_lignes(le_plateau)-1 < position[0]:
+        return False
+    return True
 
 
 def get(le_plateau, position):
@@ -54,9 +58,9 @@ def get(le_plateau, position):
 
     Returns:
         int: la valeur de la case qui se trouve à la position donnée ou
-             None si la position n'est pas sur le plateau
+        None si la position n'est pas sur le plateau
     """
-    ...
+    
 
 
 def est_un_mur(le_plateau, position):
@@ -69,7 +73,7 @@ def est_un_mur(le_plateau, position):
     Returns:
         bool: True si la case à la position donnée est un MUR, False sinon
     """
-    ...
+    
 
 
 def contient_fantome(le_plateau, position):
@@ -86,7 +90,7 @@ def contient_fantome(le_plateau, position):
 
 def est_la_sortie(le_plateau, position):
     """Détermine si la position donnée est la sortie
-       cad la case en bas à droite du labyrinthe
+    cad la case en bas à droite du labyrinthe
 
     Args:
         le_plateau (plateau): un plateau de jeu
@@ -100,8 +104,8 @@ def est_la_sortie(le_plateau, position):
 
 def deplace_personnage(le_plateau, personnage, direction):
     """déplace le PERSONNAGE sur le plateau si le déplacement est valide
-       Le personnage ne peut pas sortir du plateau ni traverser les murs
-       Si le déplacement n'est pas valide, le personnage reste sur place
+    Le personnage ne peut pas sortir du plateau ni traverser les murs
+    Si le déplacement n'est pas valide, le personnage reste sur place
 
     Args:
         le_plateau (plateau): un plateau de jeu
@@ -116,7 +120,7 @@ def deplace_personnage(le_plateau, personnage, direction):
 
 def voisins(le_plateau, position):
     """Renvoie l'ensemble des positions cases voisines accessibles de la position renseignées
-       Une case accessible est une case qui est sur le plateau et qui n'est pas un mur
+    Une case accessible est une case qui est sur le plateau et qui n'est pas un mur
     Args:
         le_plateau (plateau): un plateau de jeu
         position (tuple): un tuple de deux entiers de la forme (no_ligne, no_colonne) 
@@ -129,15 +133,15 @@ def voisins(le_plateau, position):
 
 def fabrique_le_calque(le_plateau, position_depart):
     """fabrique le calque d'un labyrinthe en utilisation le principe de l'inondation :
-       
+    
     Args:
         le_plateau (plateau): un plateau de jeu
         position_depart (tuple): un tuple de deux entiers de la forme (no_ligne, no_colonne) 
 
     Returns:
         matrice: une matrice qui a la taille du plateau dont la case qui se trouve à la
-       position_de_depart est à 0 les autres cases contiennent la longueur du
-       plus court chemin pour y arriver (les murs et les cases innaccessibles sont à None)
+        position_de_depart est à 0 les autres cases contiennent la longueur du
+        plus court chemin pour y arriver (les murs et les cases innaccessibles sont à None)
     """
     ...
 
