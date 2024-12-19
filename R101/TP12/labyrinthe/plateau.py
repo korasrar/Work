@@ -60,7 +60,9 @@ def get(le_plateau, position):
         int: la valeur de la case qui se trouve à la position donnée ou
         None si la position n'est pas sur le plateau
     """
-    
+    if est_sur_le_plateau(le_plateau,position):
+        return mat.get_val(le_plateau,position[0],position[1])
+    return None
 
 
 def est_un_mur(le_plateau, position):
@@ -73,7 +75,9 @@ def est_un_mur(le_plateau, position):
     Returns:
         bool: True si la case à la position donnée est un MUR, False sinon
     """
-    
+    if get(le_plateau,position) == MUR:
+        return True
+    return False
 
 
 def contient_fantome(le_plateau, position):
@@ -86,7 +90,9 @@ def contient_fantome(le_plateau, position):
     Returns:
         bool: True si la case à la position donnée est un FANTOME, False sinon
     """
-    ...
+    if get(le_plateau,position) == FANTOME:
+        return True
+    return False
 
 def est_la_sortie(le_plateau, position):
     """Détermine si la position donnée est la sortie
@@ -99,7 +105,9 @@ def est_la_sortie(le_plateau, position):
     Returns:
         bool: True si la case à la position donnée est la sortie, False sinon
     """
-    ...
+    if position[0] == mat.get_nb_lignes(le_plateau)-1 and position[1] == mat.get_nb_colonnes(le_plateau)-1:
+        return True
+    return False
 
 
 def deplace_personnage(le_plateau, personnage, direction):
@@ -115,7 +123,7 @@ def deplace_personnage(le_plateau, personnage, direction):
     Returns:
         [tuple]: la nouvelle position du personnage
     """
-    ...
+    
 
 
 def voisins(le_plateau, position):

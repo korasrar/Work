@@ -15,7 +15,7 @@ def new_matrice(nb_lignes, nb_colonnes, valeur_par_defaut=0):
 
     Returns:
         matrice: une matrice dont le nombre de lignes est nb_lignes, le nombre de colonnes
-                 est nb_colonnes
+        est nb_colonnes
         et dont toutes les valeurs sont à valeur_par_defaut
     """
     return mat.creer_matrice(nb_lignes,nb_colonnes,valeur_par_defaut)
