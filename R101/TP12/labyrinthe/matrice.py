@@ -118,14 +118,14 @@ def sauve_matrice(matrice, nom_fichier):
 
 def lignes_et_colonnes(nom_fichier):
     """renvoie un tuple contenant le nombre de lignes et le nombre de colonnes d'une matrice
-       dans un fichier csv
+    dans un fichier csv
 
     Args:
         nom_fichier (str): le nom d'un chemin vers un fichier
-                           par exemple "./matrice1.csv" ou "../sauvegardes/matrice3.csv"
+        par exemple "./matrice1.csv" ou "../sauvegardes/matrice3.csv"
     Returns:
         tuple: un tuple de deux nombres entiers (nombre_de_lignes, nombre_de_colonnes) de la matrice
-               contenu dans le fichier
+        contenu dans le fichier
     """
     fichier = open(nom_fichier, 'r')
     nb_lignes = 0
@@ -133,7 +133,8 @@ def lignes_et_colonnes(nom_fichier):
         nb_lignes += 1
     nb_colonnes  = len(ligne.split(","))
     return (nb_lignes, nb_colonnes)
-    
+
+
 def charge_matrice(nom_fichier, type_valeur='int'):
     """Charge une matrice à partir d'un fichier csv dont chaque ligne
     représente une ligne de la matrice et les valeurs (des entiers ou des str)
@@ -141,7 +142,7 @@ def charge_matrice(nom_fichier, type_valeur='int'):
 
     Args:
         nom_fichier (str): le nom d'un chemin vers un fichier
-                           par exemple "./matrice1.csv" ou "../sauvegardes/matrice3.csv"
+        par exemple "./matrice1.csv" ou "../sauvegardes/matrice3.csv"
         type_valeur (str, optional): le type des valeurs ('int' ou 'str'. Defaults to 'int'.
     Returns:
         matrice (matrice): une matrice selon la modélisation précisée
