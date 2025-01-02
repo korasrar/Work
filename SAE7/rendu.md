@@ -72,5 +72,25 @@ Après lectures des documents on peut observer donc que le premier octets défin
 On peut observer aussi que tout les 4 pixels : 00 00 qui se rapporte a la fin d'une ligne
 Et que a la fin du bitmap on  a : 00 01 ce qui se rapporte a la fin du bitmap
 ### A.7 
-#### 1. 
-#### 2.
+#### 1. Quel est le poids du fichier Image5.bmp? Pourquoi est-il moins grand que celui de l'image Image4.bmp?
+Poids du fichier a l'adresse 0x02 : (00 00 04 4E)¹⁶ = (1102)¹⁰
+Le fichier est moins grand que L'Image4 car on peut voir que l'image a de plus grande suite de pixels de la même couleurs et grace a la compression cela rend moins lourd le fichier.
+#### 2. Décodez le code des pixels. (C'est-a-dire essayez de retrouver dans l'hexadécimal  le codage des pixels et expliquez-le)
+Voici les valeurs hexadecimal a l'adresse du début du bitmap : 
+01 01 01 00 01 01 01 00 00 00 04 00 00 00 04 00 00 00 04 01 00 00 00 01
+On peut principalement lire ceci
+01 01 -> 1 pixel blanc
+01 00 -> 1 pixel rouge
+04 00 -> 4 pixel rouge
+Le plus gros changement ce retrouve donc sur les suites des 4 pixels rouges qui est représenter avec moins de valeur que sur l'Image3
+### A.8
+#### Modifiez le fichier Image5.bmp afin d'obtenir cette image que vous nommerez Image6.bmp . Attention vous devez modifier directement dans le code compressé.
+Les changements : 
+01 01 01 00 01 01 01 00 00 00 04 00 00 00 04 00 00 00 04 01 00 00 00 01
+->
+01 01 01 01 01 00 01 01 00 00 04 00 00 00 04 00 00 00 01 01 01 00 01 01 01 00 00 00 01
+J'ai donc modifier la suite des 4 pixels blanc a la fin et les valeurs pour le bas de l'image
+### A.9
+#### Modifiez le fichier Image6.bmp afin d'obtenir cette image que vous nommerez Image7.bmp . Attention vous devez modifier directement dans le code compressé.
+### A.10
+#### Modifiez le fichier Image7.bmp afin d'obtenir cette image que vous nommerez Image8.bmp . Attention vous devez modifier directement dans le code compressé.
