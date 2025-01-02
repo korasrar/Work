@@ -64,5 +64,13 @@ A9 01 00 00 -> 56 FE FF FF
 60 04 00 00 -> (00 00 04 60)¹⁶ = (1120)¹⁰ octets
 Le poid du fichier a augmenter 102 -> 1120 octets
 #### 2. Trouvez dans l'entête l'offset que donne l'adresse de début des pixels.
-
-#### 3. Décodez le code des pixels. (C'est-a-dire essayez de retrouver dans l'hexadécimal  le codage des pixels et expliquez-le)
+36 04 00 00 donc le début des pixels se trouve a l'adresse 0436
+#### 3. Décodez le code des pixels. (C'est-a-dire essayez de retrouver dans l'hexadécimal le codage des pixels et expliquez-le)
+Voici donc les valeurs hexadecimal de l'adresse du début des pixels jusqu'a la fin :
+01 00 01 01 01 00 01 01 00 00 01 01 01 00 01 01 01 00 00 00 01 00 01 01 01 00 01 01 00 00 01 01 01 00 01 01 01 00 00 00 00 01
+Après lectures des documents on peut observer donc que le premier octets définis le nombre de pixels qui auront la valeurs de l'octets suivant. Donc 01 00 sinifie que 1 pixel sera a la valeur 0 ce qui signifie que 1 pixel sera de couleur rouge par rapport a la palette de couleur du fichier.
+On peut observer aussi que tout les 4 pixels : 00 00 qui se rapporte a la fin d'une ligne
+Et que a la fin du bitmap on  a : 00 01 ce qui se rapporte a la fin du bitmap
+### A.7 
+#### 1. 
+#### 2.
