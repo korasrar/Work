@@ -63,6 +63,7 @@ A9 01 00 00 -> 56 FE FF FF
 #### 1. Quel est le poids du fichier? Pourquoi? Que c'est-il passé?
 60 04 00 00 -> (00 00 04 60)¹⁶ = (1120)¹⁰ octets
 Le poid du fichier a augmenter 102 -> 1120 octets
+Car la palette de couleurs laisse de la place pour 256 couleurs
 #### 2. Trouvez dans l'entête l'offset que donne l'adresse de début des pixels.
 36 04 00 00 donc le début des pixels se trouve a l'adresse 0436
 #### 3. Décodez le code des pixels. (C'est-a-dire essayez de retrouver dans l'hexadécimal le codage des pixels et expliquez-le)
@@ -92,5 +93,18 @@ Les changements :
 J'ai donc modifier la suite des 4 pixels blanc a la fin et les valeurs pour le bas de l'image
 ### A.9
 #### Modifiez le fichier Image6.bmp afin d'obtenir cette image que vous nommerez Image7.bmp . Attention vous devez modifier directement dans le code compressé.
+Les changements  
+J'ai commencer par rajouter la couleur bleu et verte dans la palette de couleurs du fichier :  
+FF 00 00 00 (Bleu)  
+00 FF 00 00 (Vert)  
+![BleuVert](./screen/BleuVertA9.bmp)  
+Puis j'ai modifier les index de couleurs dans le bitmap pour correspondre a l'image d'exemple :  
+01 01 01 01 01 00 01 01 00 00 04 00 00 00 04 00 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image6) 
+![Image6](Image6.bmp)
+->  
+01 01 01 01 01 **02** 01 01 00 00 04 00 00 00 04 **03** 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image7)
+![Image7](Image7.bmp)
 ### A.10
 #### Modifiez le fichier Image7.bmp afin d'obtenir cette image que vous nommerez Image8.bmp . Attention vous devez modifier directement dans le code compressé.
+## B
+### B.1 Passons à la manipulation d'image en PYTHON 
