@@ -122,3 +122,4 @@ A la suite des modifications le poids du fichier, le nombres de couleurs dans la
 ![headerA10](./screen/headerA10.png)
 ## B
 ### B.1 Passons à la manipulation d'image en PYTHON 
+####Avec ces éléments créez un programme python qui transpose une image: 
