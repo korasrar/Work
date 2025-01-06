@@ -105,7 +105,7 @@ FF 00 00 00 (Bleu)
 ![BleuVert](./screen/BleuVertA9.bmp)  
 Puis j'ai modifier les index de couleurs dans le bitmap pour correspondre a l'image d'exemple :  
 01 01 01 01 01 00 01 01 00 00 04 00 00 00 04 00 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image6) 
-
+![Image6](Image6.bmp)
 ->  
 01 01 01 01 01 **02** 01 01 00 00 04 00 00 00 04 **03** 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image7)
 ![Image7](Image7.bmp)
@@ -122,4 +122,4 @@ A la suite des modifications le poids du fichier, le nombres de couleurs dans la
 ![headerA10](./screen/headerA10.png)
 ## B
 ### B.1 Passons à la manipulation d'image en PYTHON 
-####Avec ces éléments créez un programme python qui transpose une image: 
+#### Avec ces éléments créez un programme python qui transpose une image: 
