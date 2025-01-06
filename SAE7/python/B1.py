@@ -21,6 +21,7 @@ sortie=i.copy()
 sortie.putpixel((1,2),(0,0,255))
 sortie.save("/home/koras/Work/SAE7/Imageout.bmp")"""
 
+# Reponse : 
 i=Image.open("SAE7/Imagetest.bmp")
 sortie=Image.new(i.mode,i.size)
 for y in range(i.size[1]):
