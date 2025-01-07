@@ -172,8 +172,14 @@ def fabrique_le_calque(le_plateau, position_depart):
         position_de_depart est à 0 les autres cases contiennent la longueur du
         plus court chemin pour y arriver (les murs et les cases innaccessibles sont à None)
     """
-    
-
+    plateau_claque = mat.new_matrice(mat.get_nb_lignes(le_plateau),mat.get_nb_colonnes(le_plateau),None)
+    mat.set_val(plateau_claque,position_depart[0],position_depart[1],0)
+    ind = 0
+    position_actuel = position_depart
+    while get(le_plateau,position_actuel) != 2:
+        if voisins(le_plateau,position_actuel) != set():
+            for position in 
+        
 
 def fabrique_chemin(le_plateau, position_depart, position_arrivee):
     """Renvoie le plus court chemin entre position_depart position_arrivee
