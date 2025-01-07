@@ -22,7 +22,7 @@ def affiche_menu2():
           plateau.OUEST+":OUEST\n")
 
 
-def affiche_jeu(le_plateau, affichage_graphique=None):
+def affiche_jeu(le_plateau, affichage_graphique=matrice_graphique.MatriceGraphique(mon_plateau)):
     """Permet à l'utilisateur d'interagir avec le jeu
     Sur la sortie standart :
         - le terminal est clear
