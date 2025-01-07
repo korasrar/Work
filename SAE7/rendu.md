@@ -158,5 +158,63 @@ def nuancegris(filebmp):
             sortie.putpixel((x,y),(newpixel,newpixel,newpixel))
     sortie.save("SAE7/Imageout2.bmp")
 ```
-Grace a la formule donner dns les questions j'ai additioner les valeurs decimal des couleurs puis fait une division entiere par trois et enfin remplacer tout les pixel de l'image par les pixel de nuances de gris
+Grace a la formule donner dans la question j'ai additioner les valeurs decimal des couleurs puis fait une division entiere par trois et enfin remplacer tout les pixel de l'image par les pixel de nuances de gris
 ### B.4 Créez un programme python qui passe cette image  (Logo IUT) là en noir et blanc:
+```
+def noiretblanc(filebmp):
+    i=Image.open(filebmp)
+    sortie=Image.new(i.mode,i.size)
+    for y in range(i.size[1]):
+        for x in range(i.size[0]):
+            pixel = i.getpixel((x,y))
+            if (pixel[0]*pixel[0]+pixel[1]*pixel[1]+pixel[2]*pixel[2])>255*255*3//2:
+                sortie.putpixel((x,y),(255,255,255))
+            else :
+                sortie.putpixel((x,y),(0,0,0))
+    sortie.save("SAE7/Imageout3.bmp")
+```
+Grace a la formule donner dans la question je fais le test et si il est True alors je putpixel un pixel blanc et sinon un pixel noir 
+### B.5 Créez un programme python qui cache le logo en noir et blanc dans l'image hall-mod_0.bmp :
+#### On peut commencer par mettre toutes les valeurs rouges de chaque pixel à une valeur paire. Chaque valeur réserve ainsi une place dans ses unités pour un bit de l'image à cacher. Comme les couleurs ne changent que très peu si on ne modifie que de 1 une composante de couleur, la modification passera inaperçue:
+##### Voyez-vous une différence? 
+Nan il n'y a aucune différence visible a l'oeuil nu 
+##### Maintenant vous pouvez cacher votre logo noir et blanc Imageout3.bmp dans cette image et obtenir Imageout_steg_1.bmp:
+```
+def cacher(i,b):
+    return i-(i%2)+b
+
+def steganographiecacher(filetohide,filehost):
+    hide=Image.open(filetohide)
+    host=Image.open(filehost)
+    sortie=Image.new(host.mode,host.size)
+    for y in range(hide.size[1]):
+        for x in range(hide.size[0]):
+            pixelhide = hide.getpixel((x,y))
+            pixelhost = host.getpixel((x,y))
+            if pixelhide == (0,0,0):
+                sortie.putpixel((x,y),(cacher(pixelhost[0],1),pixelhost[1],pixelhost[2]))
+            else :
+                sortie.putpixel((x,y),host.getpixel((x,y)))
+    sortie.save("SAE7/Imageout_steg_1.bmp")
+print(steganographiecacher("SAE7/Imageout3.bmp","SAE7/Imageout_steg_0.bmp"))
+```
+#### faite la démarche inverse avec un lecteur d'image cachée et on extrait Imageout3.bmp de Imageout_steg_1.bmp:
+```
+def trouver(i):
+    return i%2
+
+def steganographietrouver(filebmp):
+    i=Image.open(filebmp)
+    sortie=Image.new(i.mode,i.size)
+    for y in range(i.size[1]):
+        for x in range(i.size[0]):
+            pixel = i.getpixel((x,y))
+            if pixel == (cacher(pixel[0],1),pixel[1],pixel[2]):
+                sortie.putpixel((x,y),(trouver(pixel[0]),0,0))
+            else :
+                sortie.putpixel((x,y),(255,255,255))
+    sortie.save("SAE7/Imageout4.bmp")
+print(steganographietrouver("SAE7/Imageout_steg_1.bmp"))
+```
+J'ai changer le nom demander (Imageout3.bmp) en Imageout4.bmp pour pas perdre l'ancienne image mais j'obtient bien l'image 3 grace a ma fonction et la fonction trouver  
+Je cherche tout les pixel rouge imapair et inverse le calcul de la fonction cacher avec la focntin trouver et le je transforme le reste des pixels en blanc
