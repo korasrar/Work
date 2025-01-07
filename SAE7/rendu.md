@@ -123,7 +123,8 @@ A la suite des modifications le poids du fichier, le nombres de couleurs dans la
 ## B
 ### B.1 Passons à la manipulation d'image en PYTHON 
 #### Avec ces éléments créez un programme python qui transpose une image: 
-fonction reponse : 
+fonction ré ponse : 
+```
 def transpose(filebmp):
     i=Image.open(filebmp)
     sortie=Image.new(i.mode,i.size)
@@ -131,6 +132,18 @@ def transpose(filebmp):
         for x in range(i.size[0]):
             sortie.putpixel((x,y),i.getpixel((y,x)))
     sortie.save("SAE7/Imageout0.bmp")
+```
 J'ai inverser le y et x dans getpixel, ce qui fait donc que j'ai inverser les lignes et les colonnes 
 ### B.2
 #### Créez un programme python qui inverse une image dans un miroir: 
+```
+def miroir(filebmp):
+    i=Image.open(filebmp)
+    sortie=Image.new(i.mode,i.size)
+    for y in range(i.size[1]):
+        for x in range(i.size[0]):
+            sortie.putpixel((x,y),i.getpixel((-x,y)))
+    sortie.save("SAE7/Imageout1.bmp")
+```
+J'ai changer le x du getpixel en -x ce qui me permet de récuperer le pixel a l'inverse de sa postion en colonne.
+### B.3 Créez un programme python qui passe cette image (Logo IUT) là en niveaux de gris:

@@ -23,9 +23,9 @@ sortie.save("/home/koras/Work/SAE7/Imageout.bmp")"""
 
 # Reponse : 
 def transpose(filebmp):
-i=Image.open(filebmp)
-sortie=Image.new(i.mode,i.size)
-for y in range(i.size[1]):
-    for x in range(i.size[0]):
-        sortie.putpixel((x,y),i.getpixel((y,x)))
-sortie.save("SAE7/Imageout0.bmp")
+    i=Image.open(filebmp)
+    sortie=Image.new(i.mode,i.size)
+    for y in range(i.size[1]):
+        for x in range(i.size[0]):
+            sortie.putpixel((x,y),i.getpixel((y,x)))
+    sortie.save("SAE7/Imageout0.bmp")
