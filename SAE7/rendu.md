@@ -147,3 +147,16 @@ def miroir(filebmp):
 ```
 J'ai changer le x du getpixel en -x ce qui me permet de récuperer le pixel a l'inverse de sa postion en colonne.
 ### B.3 Créez un programme python qui passe cette image (Logo IUT) là en niveaux de gris:
+```
+def nuancegris(filebmp):
+    i=Image.open(filebmp)
+    sortie=Image.new(i.mode,i.size)
+    for y in range(i.size[1]):
+        for x in range(i.size[0]):
+            pixel = i.getpixel((x,y))
+            newpixel = (pixel[0]+pixel[1]+pixel[2])//3
+            sortie.putpixel((x,y),(newpixel,newpixel,newpixel))
+    sortie.save("SAE7/Imageout2.bmp")
+```
+Grace a la formule donner dns les questions j'ai additioner les valeurs decimal des couleurs puis fait une division entiere par trois et enfin remplacer tout les pixel de l'image par les pixel de nuances de gris
+### B.4 Créez un programme python qui passe cette image  (Logo IUT) là en noir et blanc:
