@@ -123,7 +123,15 @@ def deplace_personnage(le_plateau, personnage, direction):
     Returns:
         [tuple]: la nouvelle position du personnage
     """
-    
+    if direction == "NORD":
+        
+    if direction == "SUD":
+        
+    if direction == "EST":
+        
+    if direction == "OUEST":
+        
+
 
 
 def voisins(le_plateau, position):
