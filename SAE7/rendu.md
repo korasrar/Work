@@ -189,7 +189,6 @@ def steganographiecacher(filetohide,filehost):
     sortie=Image.new(host.mode,host.size)
     for y in range(hide.size[1]):
         for x in range(hide.size[0]):
-            pixelhide = hide.getpixel((x,y))
             pixelhost = host.getpixel((x,y))
             if pixelhide == (0,0,0):
                 sortie.putpixel((x,y),(cacher(pixelhost[0],1),pixelhost[1],pixelhost[2]))
