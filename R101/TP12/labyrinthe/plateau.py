@@ -16,7 +16,6 @@ OUEST = 'q'
 SUD = 'w'
 EST = 's'
 
-
 def init(nom_fichier="./labyrinthe1.txt"):
     """Construit le plateau de jeu de la façon suivante :
         - crée une matrice à partir d'un fichier texte qui contient des COULOIR et MUR
@@ -33,6 +32,7 @@ def init(nom_fichier="./labyrinthe1.txt"):
     mat.set_val(plateau,0,0,2)
     mat.set_val(plateau,mat.get_nb_lignes(plateau)-1,mat.get_nb_colonnes(plateau)-1,3)
     return plateau
+
 
 def est_sur_le_plateau(le_plateau, position):
     """Indique si la position est bien sur le plateau
@@ -109,7 +109,6 @@ def est_la_sortie(le_plateau, position):
         return True
     return False
 
-
 def deplace_personnage(le_plateau, personnage, direction):
     """déplace le PERSONNAGE sur le plateau si le déplacement est valide
     Le personnage ne peut pas sortir du plateau ni traverser les murs
@@ -123,15 +122,20 @@ def deplace_personnage(le_plateau, personnage, direction):
     Returns:
         [tuple]: la nouvelle position du personnage
     """
-    if direction == "NORD":
-        
-    if direction == "SUD":
-        
-    if direction == "EST":
-        
-    if direction == "OUEST":
-        
-
+    newposition = (0,0)
+    if direction == "z":
+        newposition = (personnage[0]-1,personnage[1])
+    if direction == "w":
+        newposition = (personnage[0]+1,personnage[1])
+    if direction == "q":
+        newposition = (personnage[0],personnage[1]-1)
+    if direction == "s":
+        newposition = (personnage[0],personnage[1]+1)
+    if not est_sur_le_plateau(le_plateau,newposition) or est_un_mur(le_plateau,newposition):
+            return personnage
+    mat.set_val(le_plateau,personnage[0],personnage[1],0)
+    mat.set_val(le_plateau,newposition[0],newposition[1],2)
+    return newposition
 
 
 def voisins(le_plateau, position):
@@ -144,7 +148,16 @@ def voisins(le_plateau, position):
     Returns:
         set: l'ensemble des positions des cases voisines accessibles
     """
-    ...
+    positionvoisine = set()
+    if est_sur_le_plateau(le_plateau,(position[0]-1,position[1])) and not est_un_mur(le_plateau,(position[0]-1,position[1])) :
+        positionvoisine.add((position[0]-1,position[1]))
+    if est_sur_le_plateau(le_plateau,(position[0]+1,position[1])) and not est_un_mur(le_plateau,(position[0]+1,position[1])) :
+        positionvoisine.add((position[0]+1,position[1]))
+    if est_sur_le_plateau(le_plateau,(position[0],position[1]-1)) and not est_un_mur(le_plateau,(position[0],position[1]-1)) :
+        positionvoisine.add((position[0],position[1]-1))
+    if est_sur_le_plateau(le_plateau,(position[0],position[1]+1)) and not est_un_mur(le_plateau,(position[0],position[1]+1)) :
+        positionvoisine.add((position[0],position[1]+1))
+    return positionvoisine
 
 
 def fabrique_le_calque(le_plateau, position_depart):
@@ -159,7 +172,7 @@ def fabrique_le_calque(le_plateau, position_depart):
         position_de_depart est à 0 les autres cases contiennent la longueur du
         plus court chemin pour y arriver (les murs et les cases innaccessibles sont à None)
     """
-    ...
+    
 
 
 def fabrique_chemin(le_plateau, position_depart, position_arrivee):
