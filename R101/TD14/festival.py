@@ -130,8 +130,7 @@ def prochain_spectacle(programme, selection):
     'programme' est un programme dont les spectacles sont triés (selon un certain critère)
     Cette fonction renvoie le premier spectacle compatible avec tous les autres spactacles de la sélection
     """
-    for show in selection:
-        if tous_compatibles(show,programme):
+    if tous_compatibles(selection,programme):
             return show
     return None
 
@@ -177,8 +176,6 @@ print("Proposition 3 : ", proposition3)
 
 # Algo glouton (forme plus générale)
 
-def selection(programme, fonction_de_tri):
-    
 
 
 #print("Proposition 1 : ", selection(nikopol, tri_selon_debut))
