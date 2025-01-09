@@ -182,7 +182,7 @@ def fabrique_le_calque(le_plateau, position_depart):
     while not check:
         ind += 1
         for positionvoisins in set_position_voisins:
-            if positionvoisins == None :
+            if mat.get_val(plateau_claque,positionvoisins[0],positionvoisins[1]) == None :
                 mat.set_val(plateau_claque,positionvoisins[0],positionvoisins[1],ind)
                 sset_future_voisins = set_future_voisins.union(voisins(le_plateau,positionvoisins))
             if get(le_plateau,positionvoisins) == PERSONNAGE:
