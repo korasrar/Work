@@ -33,6 +33,7 @@ def init(nom_fichier="./labyrinthe1.txt"):
     mat.set_val(plateau,mat.get_nb_lignes(plateau)-1,mat.get_nb_colonnes(plateau)-1,3)
     return plateau
 
+plateau_test=init("/home/iut45/Etudiants/o22401112/Work/R101/TP12/labyrinthe/labyrinthe1.txt")
 
 def est_sur_le_plateau(le_plateau, position):
     """Indique si la position est bien sur le plateau
@@ -123,13 +124,13 @@ def deplace_personnage(le_plateau, personnage, direction):
         [tuple]: la nouvelle position du personnage
     """
     newposition = (0,0)
-    if direction == "z":
+    if direction == NORD:
         newposition = (personnage[0]-1,personnage[1])
-    if direction == "w":
+    if direction == SUD:
         newposition = (personnage[0]+1,personnage[1])
-    if direction == "q":
+    if direction == OUEST:
         newposition = (personnage[0],personnage[1]-1)
-    if direction == "s":
+    if direction == EST:
         newposition = (personnage[0],personnage[1]+1)
     if not est_sur_le_plateau(le_plateau,newposition) or est_un_mur(le_plateau,newposition):
             return personnage
@@ -175,11 +176,21 @@ def fabrique_le_calque(le_plateau, position_depart):
     plateau_claque = mat.new_matrice(mat.get_nb_lignes(le_plateau),mat.get_nb_colonnes(le_plateau),None)
     mat.set_val(plateau_claque,position_depart[0],position_depart[1],0)
     ind = 0
-    position_actuel = position_depart
-    while get(le_plateau,position_actuel) != 2:
-        if voisins(le_plateau,position_actuel) != set():
-            for position in 
-        
+    set_position_voisins = voisins(le_plateau,position_depart)
+    set_future_voisins = set()
+    check = False
+    while not check:
+        ind += 1
+        for positionvoisins in set_position_voisins:
+            if positionvoisins == None :
+                mat.set_val(plateau_claque,positionvoisins[0],positionvoisins[1],ind)
+                sset_future_voisins = set_future_voisins.union(voisins(le_plateau,positionvoisins))
+            if get(le_plateau,positionvoisins) == PERSONNAGE:
+                    check = True
+        set_position_voisins = set_future_voisins
+        set_future_voisins = set()
+    return plateau_claque
+print(fabrique_le_calque(plateau_test,(4,2)))
 
 def fabrique_chemin(le_plateau, position_depart, position_arrivee):
     """Renvoie le plus court chemin entre position_depart position_arrivee
@@ -193,7 +204,7 @@ def fabrique_chemin(le_plateau, position_depart, position_arrivee):
         list: Une liste de positions entre position_arrivee et position_depart
         qui représente un plus court chemin entre les deux positions
     """
-    ...
+    liste_position = []
 
 
 def deplace_fantome(le_plateau, fantome, personnage):
