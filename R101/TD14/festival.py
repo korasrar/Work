@@ -130,26 +130,21 @@ def prochain_spectacle(programme, selection):
     'programme' est un programme dont les spectacles sont triés (selon un certain critère)
     Cette fonction renvoie le premier spectacle compatible avec tous les autres spactacles de la sélection
     """
-    ind = 0
     for show in selection:
-        for spectacle in programme:
-            ind +=1
-            if compatibles(show,spectacle) and len(selection) == ind:
-                return show
+        if tous_compatibles(show,programme):
+            return show
+    return None
 
 def selection2(programme):
     """
     propose la sélection de spectacles donnée par l’algorithme 2 vu en TD
     """
     trie_programme_duree = tri_selon_duree(programme)
-    selection = []
-    selection_est_en_cours = True
-    while selection_est_en_cours:
+    selection = [trie_programme_duree[0]]
+    prochain_spectaclecaca = trie_programme_duree[0]
+    while prochain_spectaclecaca != None:
+        selection.append(prochain_spectaclecaca)
         prochain_spectaclecaca = prochain_spectacle(trie_programme_duree,selection)
-        if prochain_spectaclecaca != None:
-            selection.append(prochain_spectaclecaca)
-        else:
-            selection_est_en_cours = False
     return selection
 
 
@@ -183,7 +178,7 @@ print("Proposition 3 : ", proposition3)
 # Algo glouton (forme plus générale)
 
 def selection(programme, fonction_de_tri):
-    ...
+    
 
 
 #print("Proposition 1 : ", selection(nikopol, tri_selon_debut))
