@@ -7,27 +7,43 @@ Dans l'en tête du fichier bmp a l'adresser 0x02 la valeur qui est attribué a l
 Elle se convertit en 000C7399, le poit faible est la valeur le plus a gauche
 Cela donne 816 025 en base 10.  
 **816 026 ≠ 816 025**  
-Il faut donc modifier la valeur en ajoutant 1 a 9 pour donner : 000C739A qui s'écrirat : 9A 73 0C 00 dans Okteta
+Il faut donc modifier la valeur en ajoutant 1 a 9 pour donner : 000C739A qui s'écrirat : 9A 73 0C 00 dans Okteta  
+![headerA0](./screen/headerA0.png)  
 ### A.1 Avec Okteta saisir de l'hexadécimal pour créer une image bmp de type Windows 2.0 -
-Done 
+En suivant l'aide de la question et en prenant appuis sur les documents conseil j'ai créer l'Image0.nmp
+![Image0](Image0.bmp)  
+Voici son Hexadecimal :  
+![headerA1](./screen/headerA1.png)  
+J'ai créer le dammier en écrivant pixel par pixel la valeur du BGR donc :  
+FF FF FF pour blanc 
+00 00 FF pour rouge
 ### A.2 Modification d'image -
-Done 
+Grace a la page pour les couleurs j'ai remplacer les valeurs des pixels blanc et rouges du damier par les couleurs dans l'image d'exemple 
+![Imagetest](Imagetest.bmp)  
+Voici son Hexadecimal :  
+![headerA2](./screen/headerA2.png)  
 ### A.3 Un Fichier BMP d'un type plus récent -
 #### 1. Combien y-a-t-il de bits par pixel ?
-Il y a 24 bits par pixels (18)16 = (24)10
-#### 2. Quelle est la taille des données pixels ?
-Elle est de 48 octets (30)16 = (48)10 
+Il y a 24 bits par pixels (18)16 = (24)10  
+![headerA3_1](./screen/headerA3_1.png) <- 0x1C
+#### 2. Quelle est la taille des données pixels ?
+Elle est de 48 octets (30)16 = (48)10  
+![headerA3_2](./screen/headerA3_2.png) <- 0x22
 #### 3. Y a-t-il une compression utilisé ?
-Nan il n'y a pas de compression utilisé (Type compression -> 00 00)
+Nan il n'y a pas de compression utilisé (Type compression -> 00 00)  
+![headerA3_3](./screen/headerA3_3.png) <- 0x1E
 #### 4. Le codage des pixels a-t-il changé ? 
 Non c'est tojours du RGB avec un octets par couleur
 ### A.4 Un Fichier BMP avec index de couleurs -
 #### 1. Combien y-a-t-il de bits par pixel?
-Il y a 1 bit par pixel (01)16 = (01)10
+Il y a 1 bit par pixel (01)16 = (01)10  
+![headerA4_1](./screen/headerA4_1.png) <- 0x1C
 #### 2. Quelle est la taille des données pixels?
-Elle est de 16 octets (10)16 = (16)10
+Elle est de 16 octets (10)16 = (16)10  
+![headerA4_2](./screen/headerA4_2.png) <- 0x22
 #### 3. Y a-t-il une compression utilisée?
-Non il n'y a pas de compression utilisé (Type compression -> 00 00)
+Non il n'y a pas de compression utilisé (Type compression -> 00 00)  
+![headerA4_3](./screen/headerA4_3.png) <- 0x1E
 #### 4. Comment sont codées les couleurs de la palette?
 Les couleurs de la palette sont codées en 2^n, n est le nombre de bit par pixel donc le résultats est 2 car on a que 1 bit par pixel -> 2¹
 #### 5. Quel est le nombre de couleurs dans la palette?
@@ -36,21 +52,32 @@ Les couleurs de la palette sont codées avec 02, en décimal cela donne 2 donc m
 Oui, les couleurs sont au debut avec don la couleur rouge et blanche sur 4 octets chacun, et enfin les lignes de pixel qui sont codées sur 4 octets par lignes
 #### 7. Changez la couleur rouge des pixels en bleu pour obtenir l'image ci-dessous que vous nommerez ImageBleue.bmp.
 FF 00 00 00 | FF FF FF 00 (ImageBleue.bmp)
+![ImageBleue](ImageBleue.bmp)  
+![headerA4_7](./screen/headerA4_7.png)
 #### 8. Inversez le damier : les blancs à la place des bleus et les bleus à la place des blancs, pour obtenir l'image ci-dessous.
 Pour inverser le damier je vais échanger les lignes qui décrive le dammier pour obtenir le damier inverser (ImageBleueInverse.bmp)
+![ImageBleueInverse](ImageBleueInverse.bmp)  
+![headerA4_8](./screen/headerA4_8.png)
 #### 9. Modifiez le fichier  en mode index de couleurs avec okteta de façon à obtenir ceci. Enregistrez cette image sous ce nom Image3.bmp:
 Après avoir fait la conversion en binaire des valeurs hexadecimal on peut observer que le schéma des pixels est représenter, quand le bit est a 0 la couleur est rouge et 1 la couleur est blanche comme défini dans les valeurs de la palette de couleurs ->  
 F0 00 00 00 | 00 00 00 00 | 00 00 00 00 | A0 00 00 00  
+![headerA4_9](./screen/headerA4_9.png)  
 Avec ca on a donc l'image3
+![Image3](Image3.bmp)  
 #### 10. Passez le fichier de l'ancien logo du Département d'Informatique en mode index de couleurs:
+![Image3](ImageExempleIndexBMP3_16.bmp)  
+(Renverser dans A5)
 #### 11. A quelle adresse peut-on trouver le nombre de couleurs qu'il y a dans la palette?
-a l'adresse Ox2E qui est égale a (1O)¹⁶ = (16)¹⁰ comme définis dans la commande pour convert
+a l'adresse Ox2E qui est égale a (1O)¹⁶ = (16)¹⁰ comme définis dans la commande pour convert  
+![headerA4_11](./screen/headerA4_11.png) <- 0x2E
 #### 12. A quelle adresse dans la palette peut-on trouver la couleur à dominante "Blanc" utilisée par cette image?
 On peut trouve le blanc a l'adresse 0x66 sous la forme -> FE FE FD 00
 #### 13. Où commence le tableau de pixel?
-On peut trouver l'adresse de où commence le tableu a l'adresse 0x0A qui est donc 0x76
+On peut trouver l'adresse de où commence le tableu a l'adresse 0x0A qui est donc 0x76  
+![headerA4_13](./screen/headerA4_13.png) <- 0x0A
 #### 14. En modifiant l'Hex,  placez quelques pixels bleus tout en bas de l'image.
-J'ai chercher une teinte de bleu dans la palette et ensuite modifier les premier caractère en hexa du tableau pour la donner la valeur 6 car ma teinte de bleu se trouve a la 6ème position dans la palette
+J'ai chercher une teinte de bleu dans la palette et ensuite modifier les premier caractère en hexa du tableau pour la donner la valeur 6 car ma teinte de bleu se trouve a la 6ème position dans la palette  
+![headerA4_14](./screen/headerA4_14.png)
 #### 15. Que se passe-t-il si l'on diminue le nombre de couleurs dans la palette? Que se passe t-il d'un point de vue visuel? Et dans l'hexa?
 D'un point de vu visuel l'image n'a plus que 4 couleur : blanc,gris et 2 teintes de bleu et dans l'hexa on observe que la palette a mis de la place pour une palette de 16 couleurs mais que seulement 4 sont utilisées et que les pixels sont définis par 0,1,2 ou 3.
 ### A.5 Utilisation des négatifs -
@@ -65,7 +92,8 @@ A9 01 00 00 -> 56 FE FF FF
 Le poid du fichier a augmenter 102 -> 1120 octets
 Car la palette de couleurs laisse de la place pour 256 couleurs
 #### 2. Trouvez dans l'entête l'offset que donne l'adresse de début des pixels.
-36 04 00 00 donc le début des pixels se trouve a l'adresse 0436
+36 04 00 00 donc le début des pixels se trouve a l'adresse 0436  
+![headerA6_2](./screen/headerA6_2.png)
 #### 3. Décodez le code des pixels. (C'est-a-dire essayez de retrouver dans l'hexadécimal le codage des pixels et expliquez-le)
 Voici donc les valeurs hexadecimal de l'adresse du début des pixels jusqu'a la fin :  
 01 00 01 01 01 00 01 01 00 00 01 01 01 00 01 01 01 00 00 00 01 00 01 01 01 00 01 01 00 00 01 01 01 00 01 01 01 00 00 00 00 01  
@@ -89,7 +117,7 @@ Le plus gros changement ce retrouve donc sur les suites des 4 pixels rouges qui 
 Les changements :   
 01 01 01 00 01 01 01 00 00 00 04 00 00 00 04 00 00 00 04 01 00 00 00 01 (Image5)
 ![Image5](Image5.bmp)  
-->  
+->   
 01 01 01 01 01 00 01 01 00 00 04 00 00 00 04 00 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image6)
 ![Image6](Image6.bmp)  
 J'ai donc modifier la suite des 4 pixels blanc a la fin et les valeurs pour le bas de l'image  
@@ -105,12 +133,12 @@ FF 00 00 00 (Bleu)
 ![BleuVert](./screen/BleuVertA9.bmp)  
 Puis j'ai modifier les index de couleurs dans le bitmap pour correspondre a l'image d'exemple :  
 01 01 01 01 01 00 01 01 00 00 04 00 00 00 04 00 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image6) 
-![Image6](Image6.bmp)
+![Image6](Image6.bmp)  
 ->  
 01 01 01 01 01 **02** 01 01 00 00 04 00 00 00 04 **03** 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image7)
 ![Image7](Image7.bmp)
 ### A.10
-#### Modifiez le fichier Image7.bmp afin d'obtenir cette image que vous nommerez Image8.bmp . Attentio![Image6](Image6.bmp)  n vous devez modifier directement dans le code compressé.
+#### Modifiez le fichier Image7.bmp afin d'obtenir cette image que vous nommerez Image8.bmp . Attention vous devez modifier directement dans le code compressé.
 Les changements :  
 01 01 01 01 01 **02** 01 01 00 00 04 00 00 00 04 **03** 00 00 01 01 01 00 01 01 01 00 00 00 01 (Image7)
 ![Image7](Image7.bmp)  
@@ -217,3 +245,5 @@ print(steganographietrouver("SAE7/Imageout_steg_1.bmp"))
 ```
 J'ai changer le nom demander (Imageout3.bmp) en Imageout4.bmp pour pas perdre l'ancienne image mais j'obtient bien l'image 3 grace a ma fonction et la fonction trouver  
 Je cherche tout les pixel rouge imapair et inverse le calcul de la fonction cacher avec la focntin trouver et le je transforme le reste des pixels en blanc
+
+### TOUT LES FICHIER PYTYHON SONT DANS LE DOSSIER PYTHON !
